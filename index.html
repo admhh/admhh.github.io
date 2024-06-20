@@ -8,10 +8,12 @@
 <style>
 
 :root {
-    /* --main-colour: #FF0000; */
-    /* --main-colour: #337733; */
-    /* --main-colour: #bd7a15; */
     --main-colour: #3333EE;
+
+    --colour-red: #FF0000;
+    --colour-blue: #3333EE;
+    --colour-green: #337733;
+    --colour-black: #000000;
 
     --window-width: 100px;
 }
@@ -193,27 +195,16 @@ body {
     /* border: 0.1em solid var(--main-colour); */
 }
 
-/* @media screen and (min-width: 700px) {
-    .navbar {
-    display:flex;
-    justify-content: space-between;
-    padding: 1em;
-    border-bottom: 0.1em solid var(--main-colour);
+.colour-box {
+    position:fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-colour);
+    border: none;
+    cursor: pointer;
 }
-}
-
-@media screen and (max-width: 700px) {
-    .navbar {
-    display:flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height:auto;
-    /* width:100%; */
-    /* margin:auto;
-    align-items: center;
-    padding: 2em;
-}
-} */
 
 </style>
 </head>
@@ -461,6 +452,14 @@ body {
         
     </div>
 
+    <button class="colour-box" onclick="chooseColour()"></button>
+    <div class="colour-picker" style="display: none;">
+        <button class="colour-red" onclick="setColour('red')" style="position: fixed; bottom: 90px; right: 50px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-red); border: none;"></button>
+        <button class="colour-green" onclick="setColour('green')" style="position: fixed; bottom: 90px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-green); border: none;"></button>
+        <button class="colour-blue" onclick="setColour('blue')" style="position: fixed; bottom: 50px; right: 50px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-blue); border: none;"></button>
+        <button class="colour-black" onclick="setColour('black')" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-black); border: none;"></button>
+    </div>
+
 </div>
 
 <script language="JavaScript" type="text/javascript">
@@ -574,6 +573,31 @@ body {
             } else {
                 content_holders[i].style.display = "none"
             }
+        }
+    }
+
+    function chooseColour() {
+        // show colour picker element
+        var colour_pickers = document.querySelectorAll(".colour-picker");
+        for (var i = 0; i < colour_pickers.length; i++) {
+            colour_pickers[i].style.display = "block"
+        }
+    }
+
+    function setColour(colour) {
+        // get value of colour from variables
+        var rs = getComputedStyle(r);
+
+        var colour_val = rs.getPropertyValue('--colour-' + colour)
+
+        // console.log("Setting to " + colour_val + "(" + colour + ")")
+
+        r.style.setProperty('--main-colour', colour_val);
+
+        // hide colour picker element
+        var colour_pickers = document.querySelectorAll(".colour-picker");
+        for (var i = 0; i < colour_pickers.length; i++) {
+            colour_pickers[i].style.display = "none"
         }
     }
 
