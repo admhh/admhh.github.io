@@ -5,6 +5,7 @@
 <title>Adam Howard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="imgs/admh.jpg">
 <style>
 
 :root {
@@ -474,6 +475,9 @@ body {
 <script language="JavaScript" type="text/javascript">
     // Get the root element
     var r = document.querySelector(':root');
+
+    // tracker for state of colour picker
+    var picker_open = false;
     
     // // Create a function for getting a variable value
     // function myFunction_get() {
@@ -587,11 +591,37 @@ body {
 
     function chooseColour() {
         // show colour picker element
-        var colour_pickers = document.querySelectorAll(".colour-picker");
-        for (var i = 0; i < colour_pickers.length; i++) {
-            colour_pickers[i].style.display = "block"
+
+        if (picker_open) {
+            var colour_pickers = document.querySelectorAll(".colour-picker");
+            for (var i = 0; i < colour_pickers.length; i++) {
+                colour_pickers[i].style.display = "none"
+            }
+
+            picker_open = false;
+
+        } else {
+            var colour_pickers = document.querySelectorAll(".colour-picker");
+            for (var i = 0; i < colour_pickers.length; i++) {
+                colour_pickers[i].style.display = "block"
+            }
+
+            picker_open = true;
         }
+        
     }
+
+    // document.body.addEventListener('click', function() {
+    //     if (picker_open) {
+    //         var colour_pickers = document.querySelectorAll(".colour-picker");
+    //         for (var i = 0; i < colour_pickers.length; i++) {
+    //             colour_pickers[i].style.display = "none"
+    //         }
+
+    //         picker_open = false;
+
+    //     }
+    // }, true); 
 
     function setColour(colour) {
         // get value of colour from variables
