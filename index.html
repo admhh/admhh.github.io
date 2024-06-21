@@ -10,6 +10,8 @@
 
 :root {
     --main-colour: #3333EE;
+    --secondary-colour: #fffefb;
+    /* --secondary-colour: #FFFFFF; */
 
     --colour-red: #FF0000;
     --colour-blue: #3333EE;
@@ -22,6 +24,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   color: var(--main-colour);
+  background-color: var(--secondary-colour);
 }
 
 .navbar {
@@ -45,7 +48,7 @@ body {
 
 .link {
     border: 0.1em solid var(--main-colour);
-    background-color: #FFFFFF;
+    background-color: var(--secondary-colour);
     color: var(--main-colour);
     width:95%;
     height:83%;
@@ -56,19 +59,19 @@ body {
 
 .link:hover {
     background-color: var(--main-colour);
-    color: #FFFFFF;
+    color: var(--secondary-colour);
     cursor: pointer;
 }
 
 .link.active {
     background-color: var(--main-colour);
-    color: #FFFFFF;
+    color: var(--secondary-colour);
     cursor: pointer;
 }
 
 .link-outer {
     border: 0.1em solid var(--main-colour);
-    background-color: #FFFFFF;
+    background-color: var(--secondary-colour);
     border-radius: 25px;
     width:var(--window-width)/5px;
     height:5em;
@@ -284,7 +287,7 @@ body {
                         ></path>
                         <path
                             d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z"
-                            fill="#FFFFFF"
+                            fill="var(--secondary-colour)"
                         ></path>
                     </svg>
                 </a>
@@ -358,7 +361,7 @@ body {
                 Jet Black
             </h2>
             
-            <img src="imgs/jet black.png" alt="Jet Black Cover Art" class="album-image">
+            <img src="imgs/jet black.jpg" alt="Jet Black Cover Art" class="album-image">
 
             <div class="icons">
                 <!-- spotify -->
@@ -378,7 +381,7 @@ body {
                         ></path>
                         <path
                             d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z"
-                            fill="#FFFFFF"
+                            fill="var(--secondary-colour)"
                         ></path>
                     </svg>
                 </a>
@@ -423,7 +426,7 @@ body {
                         ></path>
                         <path
                             d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z"
-                            fill="#FFFFFF"
+                            fill="var(--secondary-colour)"
                         ></path>
                     </svg>
                 </a>
