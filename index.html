@@ -46,31 +46,6 @@ body {
     z-index: 1;
 }
 
-.link {
-    border: 0.1em solid var(--main-colour);
-    background-color: var(--secondary-colour);
-    color: var(--main-colour);
-    width:95%;
-    height:83%;
-    display: flex;
-    vertical-align: text-bottom;
-    display: flex;
-    justify-content: center;
-    align-items:centre;
-}
-
-.link:hover {
-    background-color: var(--main-colour);
-    color: var(--secondary-colour);
-    cursor: pointer;
-}
-
-.link.active {
-    background-color: var(--main-colour);
-    color: var(--secondary-colour);
-    cursor: pointer;
-}
-
 .link-outer {
     border: 0.1em solid var(--main-colour);
     background-color: var(--secondary-colour);
@@ -86,6 +61,35 @@ body {
     background-color: var(--main-colour);
 }
 
+
+
+.link {
+    border: 0.1em solid var(--main-colour);
+    background-color: var(--secondary-colour);
+    color: var(--main-colour);
+    width:95%;
+    height:83%;
+    display: flex;
+    /* vertical-align: text-bottom; */
+    
+    flex-direction: column-reverse;
+    justify-content:center;
+    align-items:flex-end;
+}
+
+.link:hover {
+    background-color: var(--main-colour);
+    color: var(--secondary-colour);
+    cursor: pointer;
+}
+
+.link.active {
+    background-color: var(--main-colour);
+    color: var(--secondary-colour);
+    cursor: pointer;
+}
+
+
 .link-text {
     text-align:left;
     text-decoration:none;
@@ -93,8 +97,11 @@ body {
     font-size:x-large;
     width:100%;
 
+    /* position:relative; */
+
     padding-left: 0.4em;
-    padding-top: 0.4em;
+    padding-top: 1.3em;
+    padding-bottom: 0.6em;
 
     /* position: relative;
     padding-bottom: 5px;
