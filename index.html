@@ -27,6 +27,16 @@ body {
   background-color: var(--secondary-colour);
 }
 
+/* *::selection, *::-moz-selection, *::-webkit-selection {
+    background: var(--main-colour);
+    color: var(--secondary-colour);
+} */
+
+::selection {
+    background: var(--main-colour);
+    color: var(--secondary-colour);
+}
+
 .navbar {
     display:flex;
     justify-content:space-evenly;
@@ -154,6 +164,11 @@ body {
     font-style: italic;
     cursor: pointer;
     color: var(--main-colour);
+}
+
+.body-text a:hover {
+    background: var(--main-colour);
+    color: var(--secondary-colour);
 }
 
 @media screen and (min-width: 700px) {
@@ -558,7 +573,7 @@ body {
             </p>
 
             <p>
-                Linkedin: <a href="https://www.linkedin.com/in/admhwd/" target="_blank">https://www.linkedin.com/in/admhwd/</a>
+                Linkedin: <a href="https://www.linkedin.com/in/admhwd/" target="_blank">linkedin.com/in/admhwd/</a>
             </p>
         </div>
         
