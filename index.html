@@ -18,7 +18,8 @@
     --colour-green: #337733;
     --colour-black: #000000;
 
-    --window-width: 100px;
+    --navbar-button-radius: 25px;
+    --navbar-button-height: 80px;
 }
 
 body {
@@ -45,23 +46,13 @@ body {
     border-bottom: 0.1em solid var(--main-colour);
 }
 
-
-.link-extender {
-    position:relative; 
-    width:100%;
-    height:100%;
-    top:0;
-    left: 0;
-
-    z-index: 1;
-}
+/* ================================================== link-outer ================================================== */
 
 .link-outer {
     border: 0.1em solid var(--main-colour);
     background-color: var(--secondary-colour);
-    border-radius: 25px;
-    width:var(--window-width)/5px;
-    height:5em;
+    border-radius: var(--navbar-button-radius);
+    height:var(--navbar-button-height);
     display: flex;
     justify-content: center;
     align-items:center;
@@ -71,20 +62,50 @@ body {
     background-color: var(--main-colour);
 }
 
+@media only screen and (max-width: 700px) {
+    .link-outer {
+        margin: auto;
+        width: 80vw;
+        flex-direction: column;
+    }
+}
 
+@media only screen and (min-width: 700px) {
+    .link-outer {
+        margin: 0px;
+        width: 20vw;
+        flex-direction: row;
+    }
+}
+
+/* ================================================== link ================================================== */
 
 .link {
     border: 0.1em solid var(--main-colour);
     background-color: var(--secondary-colour);
     color: var(--main-colour);
-    width:95%;
-    height:83%;
+    
+    height: 65px;
+
     display: flex;
-    /* vertical-align: text-bottom; */
     
     flex-direction: column-reverse;
     justify-content:center;
     align-items:flex-end;
+}
+
+/* nice values to initialize with */
+
+@media only screen and (min-width: 700px) {
+    .link {
+        width: calc(20vw - 10px);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .link {
+        width: calc(80vw - 10px);
+    }
 }
 
 .link:hover {
@@ -99,6 +120,7 @@ body {
     cursor: pointer;
 }
 
+/* ================================================== link-text ================================================== */
 
 .link-text {
     text-align:left;
@@ -107,29 +129,29 @@ body {
     font-size:x-large;
     width:100%;
 
-    /* position:relative; */
-
     padding-left: 0.4em;
     padding-top: 1.2em;
-    /* padding-bottom: 0.6em; */
-
-    /* position: relative;
-    padding-bottom: 5px;
-    margin-left: 20px; */
-
-    /* height:100%;
-    line-height: 100%; */
-    /* vertical-align: middle; */
-    /* display: inline-block;
-    position: relative;
-    height: 100%;
-    width: 100%; */
-    /* text-align: center; */
 }
+
+/* ================================================== body-text ================================================== */
 
 .body-text {
     text-align: justify;
     text-justify:newspaper;
+}
+
+@media screen and (min-width: 700px) {
+    .body-text {
+        margin-right: 32%;
+        margin-left: 32%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .body-text {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
 }
 
 .body-text h1 {
@@ -148,7 +170,6 @@ body {
     text-decoration-thickness: 0.06em;
     text-underline-offset: 0.15em;
     text-align: left;
-    /* border-bottom: 0.07em solid var(--main-colour); */
 }
 
 .body-text p, li {
@@ -171,19 +192,7 @@ body {
     color: var(--secondary-colour);
 }
 
-@media screen and (min-width: 700px) {
-    .body-text {
-        margin-right: 32%;
-        margin-left: 32%;
-    }
-}
 
-@media screen and (max-width: 700px) {
-    .body-text {
-        margin-right: 10%;
-        margin-left: 10%;
-    }
-}
 
 .logo {
     width: 50%;
@@ -290,8 +299,6 @@ body {
         </div>
         
     </div>
-
-    
 
     <div class="content-holder" id="work" style="display: none;">
 
@@ -608,10 +615,6 @@ body {
     // }
 
     function resize_links() {
-        // r.style.setProperty('--window-width', screen.width)
-        // console.log("Screen width: " + screen.width)
-        // var rs = getComputedStyle(r);
-        // console.log("The value of --window-width is: " + rs.getPropertyValue('--window-width'));
 
         var radius = 25;
         var link_height = 80;
