@@ -217,7 +217,7 @@ body {
     /* border: 0.1em solid var(--main-colour); */
 }
 
-.album-image {
+.image {
     width: 80%;
     height: 80%;
     display: block;
@@ -225,7 +225,7 @@ body {
     margin-right: 10%;
 }
 
-.album-image-small {
+.image-small {
     width: 40%;
     height: 40%;
     display: block;
@@ -269,23 +269,23 @@ body {
 <div class="navbar">   
     <div class="link-outer active" id="main-link-outer">
         <button class="link active" id="main-link" onclick="showPage('main')">
-            <p href="https://maps.app.goo.gl/YeSSP7X5q9tfVWHo6" class="link-text">ADAM HOWARD</p>
+            <p class="link-text" id="main-link-text">ADAM HOWARD</p>
         </button>
     </div>
 
     <div class="link-outer" id="work-link-outer"> 
         <button class="link" id="work-link" onclick="showPage('work')">
-            <p class="link-text">CV / WORK</p>
+            <p class="link-text" id="work-link-text">CV / WORK</p>
         </button>
     </div>
     <div class="link-outer" id="music-link-outer">
         <button class="link" id="music-link" onclick="showPage('music')">
-            <p class="link-text">MUSIC</p>
+            <p class="link-text" id="music-link-text">MUSIC</p>
         </button>
     </div>
     <div class="link-outer" id="contact-link-outer">
         <button class="link" id="contact-link" onclick="showPage('contact')">
-            <p class="link-text">CONTACT</p>
+            <p class="link-text" id="contact-link-text">CONTACT</p>
         </button>
     </div>
 </div>
@@ -323,7 +323,7 @@ body {
                 Robust Photometric Stereo for Specular and Shadowed Objects Under Noise
             </h2>
 
-            <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="album-image-small" loading="lazy">
+            <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" loading="lazy">
 
             <p>
                 The report for the project can be downloaded <a href="files/Dissertation AH.pdf" target="_blank">here</a>.
@@ -376,7 +376,7 @@ body {
                 Profile
             </h1>        
             
-            <img src="imgs/amber.jpeg" alt="adm Artist Picture" class="album-image-small" loading="lazy">
+            <img src="imgs/amber.jpeg" alt="adm Artist Picture" class="image-small" loading="lazy">
 
             <div class="icons">
                 <!-- spotify -->
@@ -470,7 +470,7 @@ body {
                 Jet Black
             </h2>
             
-            <!-- <img src="imgs/jet black.jpg" alt="Jet Black Cover Art" class="album-image" loading="lazy"> -->
+            <!-- <img src="imgs/jet black.jpg" alt="Jet Black Cover Art" class="image" loading="lazy"> -->
 
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/5UjAwzgyuEm1s0TqR912ac?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
@@ -518,7 +518,7 @@ body {
                 Astro White
             </h2>
             
-            <!-- <img src="imgs/astro white.jpg" alt="Astro White Cover Art" class="album-image" loading="lazy"> -->
+            <!-- <img src="imgs/astro white.jpg" alt="Astro White Cover Art" class="image" loading="lazy"> -->
 
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3gPAFIxS7lFZRJY9Cqcuw9?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
@@ -671,6 +671,24 @@ body {
         for (var i = 0; i < navbars.length; i++) {
             navbars[i].style.height = window.innerHeight;
             console.log(navbars[i].style.height);
+        }
+
+        // fudge wrapping of text in links
+        // this is not very robust - only works at 100% zoom
+        text = document.getElementById("main-link-text");
+
+        if ((window.innerWidth <= 1072 && window.innerWidth > 700) || window.innerWidth <= 314) {
+            text.style.paddingTop = "0.24em";
+        } else {
+            text.style.paddingTop = "1.2em";
+        }
+
+        text = document.getElementById("work-link-text");
+
+        if ((window.innerWidth <= 777 && window.innerWidth > 700) || window.innerWidth <= 255) {
+            text.style.paddingTop = "0.24em";
+        } else {
+            text.style.paddingTop = "1.2em";
         }
     }
 
