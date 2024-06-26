@@ -1,6 +1,6 @@
 :root {
-    /* --main-colour: #3333EE; */
-    --main-colour: #FF0000;
+    --main-colour: #3333EE;
+    /* --main-colour: #FF0000; */
     --secondary-colour: #fffefb;
     /* --secondary-colour: #000000; */
 
@@ -214,6 +214,7 @@ body {
     display: block;
     margin-left: 10%;
     margin-right: 10%;
+    border: 0.11em solid var(--main-colour);
 }
 
 .image-small {
@@ -222,7 +223,7 @@ body {
     display: block;
     margin-left: 30%;
     margin-right: 30%;
-    border: 0.1em solid var(--main-colour);
+    border: 0.11em solid var(--main-colour);
 }
 
 .map {

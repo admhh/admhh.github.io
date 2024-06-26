@@ -21,7 +21,7 @@
 <!-- import mesh-view.js function -->
 <script type="module">
 
-    import { createScene } from "./mesh-view.js"
+    import { createScene } from "./three-js/mesh-view.js"
     window.createScene = createScene;
 
 </script>
@@ -86,9 +86,17 @@
                 Robust Photometric Stereo for Specular and Shadowed Objects Under Noise
             </h2>
 
-            <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" loading="lazy">
+            <div id="frog-container" style="display: flex; margin-right: 50%; margin-left: 50%; width:1vw; justify-content:center; cursor: pointer;">
+                <!-- <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" loading="lazy" id="dissertation-frog"> -->
+            </div>
 
             <!-- <div class="image-small three-js-container" id="frog-model-container"></div> -->
+            
+            <!-- <canvas class="image-small" id="frog-model-canvas"></canvas> -->
+
+            <p>
+                Drag the frog to view the reconstructed surface.
+            </p>
 
             <p>
                 The report for the project can be downloaded <a href="files/Dissertation AH.pdf" target="_blank">here</a>.
