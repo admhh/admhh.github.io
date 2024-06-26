@@ -133,34 +133,52 @@
 
 import * as THREE from 'three';
 
-const renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+console.log('script started')
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor("#000000");
-renderer.setPixelRatio(window.devicePixelRatio);
+export function createScene() {
+    const renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor("#000000");
+    renderer.setPixelRatio(window.devicePixelRatio);
+    
+    // add the window to the holder
+    // console.log(document)
 
-document.body.appendChild(renderer.domElement);
+    var container = document.getElementById('frog-model-container');
 
-const scene = new THREE.Scene();
+    // console.log(container.offsetWidth)
 
-const camera = new THREE.PerspectiveCamera(45, 1, 1, 1000)
-camera.position.set(4, 5, 11);
+    var dims = container.getBoundingClientRect();
 
-const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
-groundGeometry.rotateX(-Math.PI / 2);
-const groundMaterial = new THREE.MeshStandardMaterial({
-    color: '#555555',
-    side: THREE.DoubleSide
-});
-const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-scene.add(groundMesh);
+    // console.log(dims.width)
 
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+    renderer.setSize(247 / 2, 247 / 2, false);
+
+    container.appendChild(renderer.domElement);
+
+    
+    const scene = new THREE.Scene();
+    
+    const camera = new THREE.PerspectiveCamera(45, 1, 1, 1000)
+    camera.position.set(4, 5, 11);
+    
+    const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
+    groundGeometry.rotateX(-Math.PI / 2);
+    const groundMaterial = new THREE.MeshStandardMaterial({
+        color: '#555555',
+        side: THREE.DoubleSide
+    });
+    const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+    scene.add(groundMesh);
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    console.log("script ran");
 }
-
-animate();
-
-console.log("script ran")

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="imgs/admh.jpg">
+
 <link rel="stylesheet" href="index.css">
 
 <script type="importmap">
@@ -15,6 +16,14 @@
         "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
       }
     }
+</script>
+
+<!-- import mesh-view.js function -->
+<script type="module">
+
+    import { createScene } from "./mesh-view.js"
+    window.createScene = createScene;
+
 </script>
 
 </head>
@@ -46,7 +55,7 @@
 
 <div class="content">
 
-    <div class="content-holder" id="main" style="display: block;">
+    <div class="content-container" id="main" style="display: block;">
 
         <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!4v1718916173490!6m8!1m7!1s4jC_4hD2FffnyvyU_6Zk6A!2m2!1d51.47191832062975!2d-0.0934459344137624!3f300.68293509124874!4f-1.9836919319311335!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
@@ -54,7 +63,7 @@
         
     </div>
 
-    <div class="content-holder" id="work" style="display: none;">
+    <div class="content-container" id="work" style="display: none;">
 
         <div class="body-text">
             <!-- <p>
@@ -79,6 +88,8 @@
 
             <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" loading="lazy">
 
+            <!-- <div class="image-small three-js-container" id="frog-model-container"></div> -->
+
             <p>
                 The report for the project can be downloaded <a href="files/Dissertation AH.pdf" target="_blank">here</a>.
             </p>
@@ -100,22 +111,11 @@
                 </ul>
             </p>
 
-            <!-- TODO : add render of reconstructed surface -->
-
-            <div>
-
-            <script src="three-js/three-r134.js"></script>
-            <script src="three-js/OBJLoader.js"></script>
-
-            <script type="module" src="./mesh-view.js"></script>
-
-        </div>
-
         </div>
         
     </div>
 
-    <div class="content-holder" id="music" style="display: none;">
+    <div class="content-container" id="music" style="display: none;">
         <div class="body-text">
 
             <h1>
@@ -317,7 +317,7 @@
     </div>
 
 
-    <div class="content-holder" id="contact" style="display: none;">
+    <div class="content-container" id="contact" style="display: none;">
 
         <div class="body-text">
             <h1>
@@ -346,6 +346,7 @@
 </div>
 
 <script language="JavaScript" type="text/javascript">
+
     // Get the root element
     var r = document.querySelector(':root');
 
@@ -461,13 +462,18 @@
         }
 
         // show / hide appropriate content
-        var content_holders = document.querySelectorAll(".content-holder");
-        for (var i = 0; i < content_holders.length; i++) {
-            if (content_holders[i].id == key) {
-                content_holders[i].style.display = "block"
+        var content_containers = document.querySelectorAll(".content-container");
+        for (var i = 0; i < content_containers.length; i++) {
+            if (content_containers[i].id == key) {
+                content_containers[i].style.display = "block"
             } else {
-                content_holders[i].style.display = "none"
+                content_containers[i].style.display = "none"
             }
+        }
+
+        if (key == "work") {
+
+            window.createScene();
         }
     }
 
