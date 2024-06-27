@@ -604,6 +604,7 @@
         var container = document.createElement('div');
         container.style.display = "block";
         container.style.textAlign = "center";
+        container.style.paddingTop = '2em'
 
         var ifrm = document.createElement('iframe');
         
@@ -621,6 +622,27 @@
         ifrm.display = "block";
         ifrm.style.border = "0.1em solid var(--main-colour)";
 
+        // var quitContainer = document.createElement('div');
+        // quitContainer.classList.add('body-text');
+
+        var quit = document.createElement('a');
+        // cross character
+        // quit.innerText = '\u{2716}';
+        quit.innerText = 'close';
+        quit.style.textAlign = 'center';
+        quit.classList.add('link-general');
+        quit.style.marginLeft = '90.5%';
+        quit.style.marginRight = '9%';
+        quit.style.fontStyle = 'normal';
+        quit.style.marginTop = '-1.5em';
+        quit.onclick = function () {
+            document.body.removeChild(container);
+            navigation_enabled = true;
+            showPage('contact');
+        }
+
+        // quitContainer.appendChild(quit);
+        container.appendChild(quit);
         container.appendChild(ifrm);
         document.body.appendChild(container);
     }

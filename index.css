@@ -169,7 +169,7 @@ body {
     list-style-type: square;
 }
 
-.body-text a, a:visited {
+.body-text a, a:visited, .link-general {
     font-weight: 600;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-decoration: underline;
@@ -178,7 +178,7 @@ body {
     color: var(--main-colour);
 }
 
-.body-text a:hover {
+.body-text a:hover, .link-general:hover {
     background: var(--main-colour);
     color: var(--secondary-colour);
 }
