@@ -542,7 +542,35 @@
     };
 
     window.onload = function() {
+        // handle url params
+        const queryString = window.location.search;
+
+        const urlParams = new URLSearchParams(queryString);
+
+        const colour = urlParams.get('colour');
+        if (colour != null && (
+            colour == 'red' ||
+            colour == 'green' ||
+            colour == 'blue' ||
+            colour == 'black'
+        )) {
+            setColour(colour);
+        }
+        
+        const page = urlParams.get('page');
+        if (page != null && (
+            page == 'main' ||
+            page == 'work' ||
+            page == 'music' ||
+            page == 'contact'
+        )) {
+            showPage(page);
+        }
+
+
         resize_links();
+
+
     };
 
     </script>
