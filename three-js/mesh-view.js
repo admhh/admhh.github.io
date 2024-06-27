@@ -15,11 +15,26 @@ export function createScene() {
         renderer.outputColorSpace = THREE.SRGBColorSpace;
 
         function resizeWindow() {
+            // resize the canvas
             if (window.innerWidth <= 700) {
                 renderer.setSize(window.innerWidth / 3, window.innerWidth / 3);
             } else {
                 renderer.setSize(window.innerWidth / 6, window.innerWidth / 6);
             }
+
+            // resize the image while we're at it
+            const image = document.getElementById('dissertation-frog-image');
+            console.log(image);
+            if (image != [] && image != null) {
+                if (window.innerWidth <= 700) {
+                    image.style.width = window.innerWidth / 3;
+                    image.style.height = window.innerWidth / 3;
+                } else {
+                    image.style.width = window.innerWidth / 6;
+                    image.style.height = window.innerWidth / 6;
+                }
+            }
+                
         }
 
         resizeWindow();
@@ -55,20 +70,15 @@ export function createScene() {
         controls.maxDistance = 200;
         // controls.minPolarAngle = 0.5;
         // controls.maxPolarAngle = 1.5;
-        controls.autoRotate = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1.0;
         controls.target = new THREE.Vector3(0, 1, 0);
         controls.update();
 
-        // const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
-        // groundGeometry.rotateX(-Math.PI / 2);
-        // const groundMaterial = new THREE.MeshStandardMaterial({
-        // color: 0x555555,
-        // side: THREE.DoubleSide
-        // });
-        // const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-        // groundMesh.castShadow = false;
-        // groundMesh.receiveShadow = true;
-        // scene.add(groundMesh);
+        // when the frog is grabbed, stop autorotate
+        renderer.domElement.addEventListener('click', function () {
+            controls.autoRotate = false;
+        });
 
         const spotLight = new THREE.SpotLight(0xffffff, 1, 0, Math.PI, 1, 0);
         spotLight.position.set(4000, 5000, 11000);
@@ -92,6 +102,7 @@ export function createScene() {
                 // then give the mesh a material
                 const mesh_material = new THREE.MeshPhongMaterial({color:0xeeeeee, specular:0xffffff, shininess:4, emissive:0x000000});
                 mesh_material.flatShading = true;
+                mesh_material.side = THREE.DoubleSide;
                 frog_mesh.material = mesh_material;
             
                 frog_mesh.geometry.computeVertexNormals();
@@ -106,6 +117,8 @@ export function createScene() {
 
                 frog_mesh.castShadow = true;
                 frog_mesh.receiveShadow = true;
+
+                frog_mesh.name = 'frog';
 
                 console.log(frog_mesh);
 
@@ -131,10 +144,15 @@ export function createScene() {
             resizeWindow();
         });
 
+
         function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
+            // const frog_mesh = scene.getObjectByName('frog');
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+
+            // rotate the camera a little bit
+            camera.rotateX(Math.PI / 1800);
         }
 
         animate();
