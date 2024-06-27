@@ -372,6 +372,9 @@
     // do links work?
     var navigation_enabled = true;
 
+    // current colour
+    var current_colour = 'blue';
+
     function resize_links() {
 
         var radius = 25;
@@ -534,6 +537,9 @@
         for (var i = 0; i < colour_pickers.length; i++) {
             colour_pickers[i].style.display = "none"
         }
+
+        // update current colour
+        current_colour = colour;
     }
 
     function cycleFrog() {
@@ -615,7 +621,7 @@
             depth = 0;
         }
 
-        ifrm.src = "./index.html?depth=" + (depth+1);
+        ifrm.src = "./index.html?depth=" + (depth+1) + "&colour=" + current_colour;
         ifrm.style.width = "80%";
         ifrm.style.height = "80vh";
         ifrm.margin = "10%";
