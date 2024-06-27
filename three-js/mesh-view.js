@@ -78,7 +78,7 @@ export function createScene() {
         // controls.minPolarAngle = 0.5;
         // controls.maxPolarAngle = 1.5;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 1.0;
+        controls.autoRotateSpeed = 2.5;
         controls.target = new THREE.Vector3(0, 1, 0);
         controls.update();
 
@@ -163,7 +163,7 @@ export function createScene() {
             renderer.render(scene, camera);
 
             // rotate the camera a little bit
-            camera.rotateX(Math.PI / 1000);
+            // camera.rotateX(Math.PI / 1000);
         }
 
         animate();
