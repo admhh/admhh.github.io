@@ -340,6 +340,10 @@
             <p>
                 Linkedin: <a href="https://www.linkedin.com/in/admhwd/" target="_blank">linkedin.com/in/admhwd/</a>
             </p>
+
+            <p>
+                Website: <a onclick="recurseSite()">https://admhh.github.io</a>
+            </p>
         </div>
         
     </div>
@@ -364,6 +368,9 @@
 
     // tracker for frog image
     var frog_index = 0;
+
+    // do links work?
+    var navigation_enabled = true;
 
     function resize_links() {
 
@@ -440,39 +447,42 @@
 
     function showPage(key) {
 
-        // update appearance of nav links
-        var links = document.querySelectorAll(".link");
-        for (var i = 0; i < links.length; i++) {
-            if (links[i].id == key + "-link") {
-                links[i].className = "link active"
-            } else {
-                links[i].className = "link"
+        if (navigation_enabled) {
+            // update appearance of nav links
+            var links = document.querySelectorAll(".link");
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].id == key + "-link") {
+                    links[i].className = "link active"
+                } else {
+                    links[i].className = "link"
+                }
+            }
+
+            var links_outer = document.querySelectorAll(".link-outer");
+            for (var i = 0; i < links_outer.length; i++) {
+                if (links_outer[i].id == key + "-link-outer") {
+                    links_outer[i].className = "link-outer active"
+                } else {
+                    links_outer[i].className = "link-outer"
+                }
+            }
+
+            // show / hide appropriate content
+            var content_containers = document.querySelectorAll(".content-container");
+            for (var i = 0; i < content_containers.length; i++) {
+                if (content_containers[i].id == key) {
+                    content_containers[i].style.display = "block"
+                } else {
+                    content_containers[i].style.display = "none"
+                }
+            }
+
+            if (key == "work") {
+
+                window.createScene();
             }
         }
 
-        var links_outer = document.querySelectorAll(".link-outer");
-        for (var i = 0; i < links_outer.length; i++) {
-            if (links_outer[i].id == key + "-link-outer") {
-                links_outer[i].className = "link-outer active"
-            } else {
-                links_outer[i].className = "link-outer"
-            }
-        }
-
-        // show / hide appropriate content
-        var content_containers = document.querySelectorAll(".content-container");
-        for (var i = 0; i < content_containers.length; i++) {
-            if (content_containers[i].id == key) {
-                content_containers[i].style.display = "block"
-            } else {
-                content_containers[i].style.display = "none"
-            }
-        }
-
-        if (key == "work") {
-
-            window.createScene();
-        }
     }
 
     function chooseColour() {
@@ -572,6 +582,31 @@
 
 
     };
+
+    function recurseSite() {
+        // this is a bit stupid
+        navigation_enabled = false;
+
+        var content_containers = document.querySelectorAll(".content-container");
+        for (var i = 0; i < content_containers.length; i++) {
+            content_containers[i].style.display = "none"
+        }
+
+        var container = document.createElement('div');
+        container.style.display = "block";
+        container.style.textAlign = "center";
+
+        var ifrm = document.createElement('iframe');
+        ifrm.src = "http://admhh.github.io";
+        ifrm.style.width = "80%";
+        ifrm.style.height = "80vh";
+        ifrm.margin = "10%";
+        ifrm.display = "block";
+        ifrm.style.border = "0.1em solid var(--main-colour)";
+
+        container.appendChild(ifrm);
+        document.body.appendChild(container);
+    }
 
     </script>
 
