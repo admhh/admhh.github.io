@@ -577,7 +577,6 @@
             showPage(page);
         }
 
-
         resize_links();
 
 
@@ -597,7 +596,15 @@
         container.style.textAlign = "center";
 
         var ifrm = document.createElement('iframe');
-        ifrm.src = "http://admhh.github.io";
+        
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var depth = urlParams.get('depth');
+        if (depth == null) {
+            depth = 0;
+        }
+
+        ifrm.src = "./index.html?depth=" + (depth+1);
         ifrm.style.width = "80%";
         ifrm.style.height = "80vh";
         ifrm.margin = "10%";
