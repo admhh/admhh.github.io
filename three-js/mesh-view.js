@@ -163,7 +163,7 @@ export function createScene() {
             renderer.render(scene, camera);
 
             // rotate the camera a little bit
-            camera.rotateX(Math.PI / 1800);
+            camera.rotateX(Math.PI / 1000);
         }
 
         animate();
