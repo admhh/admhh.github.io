@@ -87,7 +87,7 @@
             </h2>
 
             <div id="frog-container" style="display: flex; margin-right: 10%; margin-left: 10%; width:80%; justify-content: center;">
-                <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%;" loading="lazy" id="dissertation-frog-image">
+                <img src="imgs/frogs/0.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%; cursor:pointer;" loading="lazy" id="dissertation-frog-image" onclick="cycleFrog()">
             </div>
 
             <!-- <div class="image-small three-js-container" id="frog-model-container"></div> -->
@@ -95,7 +95,7 @@
             <!-- <canvas class="image-small" id="frog-model-canvas"></canvas> -->
 
             <p>
-                Drag the frog to view the reconstructed surface.
+                Input images on the left are taken from <a href="https://vision.seas.harvard.edu/qsfs/index.html" target="_blank">Xiong et al., 2012</a> (click image to cycle through). The reconstructed surface is shown on the right.
             </p>
 
             <p>
@@ -361,20 +361,9 @@
 
     // tracker for state of colour picker
     var picker_open = false;
-    
-    // // Create a function for getting a variable value
-    // function myFunction_get() {
-    //   // Get the styles (properties and values) for the root
-    //   var rs = getComputedStyle(r);
-    //   // Alert the value of the --blue variable
-    //   alert("The value of --blue is: " + rs.getPropertyValue('--blue'));
-    // }
-    
-    // // Create a function for setting a variable value
-    // function myFunction_set() {
-    //   // Set the value of variable --blue to another value (in this case "lightblue")
-    //   r.style.setProperty('--blue', 'lightblue');
-    // }
+
+    // tracker for frog image
+    var frog_index = 0;
 
     function resize_links() {
 
@@ -508,17 +497,19 @@
         
     }
 
-    // document.body.addEventListener('click', function() {
-    //     if (picker_open) {
-    //         var colour_pickers = document.querySelectorAll(".colour-picker");
-    //         for (var i = 0; i < colour_pickers.length; i++) {
-    //             colour_pickers[i].style.display = "none"
-    //         }
+    // close colour picker when clicking elsewhere
+    // this doesn't *always* work but maybe close enough
+    document.body.addEventListener('click', function() {
+        if (picker_open) {
+            var colour_pickers = document.querySelectorAll(".colour-picker");
+            for (var i = 0; i < colour_pickers.length; i++) {
+                colour_pickers[i].style.display = "none"
+            }
 
-    //         picker_open = false;
+            picker_open = false;
 
-    //     }
-    // }, true); 
+        }
+    }, true); 
 
     function setColour(colour) {
         // get value of colour from variables
@@ -533,6 +524,17 @@
         for (var i = 0; i < colour_pickers.length; i++) {
             colour_pickers[i].style.display = "none"
         }
+    }
+
+    function cycleFrog() {
+        const image = document.getElementById("dissertation-frog-image");
+
+        frog_index += 1;
+        if (frog_index > 19) {
+            frog_index = 0;
+        }
+
+        image.src = "./imgs/frogs/" + frog_index + ".png";
     }
 
     window.onresize = function() {

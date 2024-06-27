@@ -58,6 +58,7 @@ export function createScene() {
         renderer.domElement.className = "image-small";
         renderer.domElement.style.marginLeft = "10%";
         renderer.domElement.style.marginRight = "10%";
+        renderer.domElement.style.cursor = "pointer";
 
         const scene = new THREE.Scene();
 
