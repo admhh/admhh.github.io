@@ -86,8 +86,8 @@
                 Robust Photometric Stereo for Specular and Shadowed Objects Under Noise
             </h2>
 
-            <div id="frog-container" style="display: flex; margin-right: 50%; margin-left: 50%; width:1vw; justify-content:center; cursor: pointer;">
-                <!-- <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" loading="lazy" id="dissertation-frog-image"> -->
+            <div id="frog-container" style="display: flex; margin-right: 10%; margin-left: 10%; width:80%; justify-content: center;">
+                <img src="imgs/dissertation-frog.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%;" loading="lazy" id="dissertation-frog-image">
             </div>
 
             <!-- <div class="image-small three-js-container" id="frog-model-container"></div> -->
@@ -107,8 +107,9 @@
             </p>
 
             <p>
-                Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). 
-                The basic method suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project then aims to implement and evaluate a robust algorithm on these trickier cases.
+                Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). Once a normal field is reconstructed, it can be integrated to give a surface.
+                <br><br>
+                The basic method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project then aims to implement and evaluate a robust algorithm on these trickier cases.
                 <br><br>
                  <!-- The project implements the algorithm of <a>Ikehata et. al. (2012)</a> to accomodate for this, which is then extended using a smoothing technique introduced by <a>Jones, Durand and Zweiker (2004)</a>. -->
                 The project implements three main features:

@@ -14,12 +14,15 @@ export function createScene() {
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.outputColorSpace = THREE.SRGBColorSpace;
 
+        const small_scale = 1 / 3;
+        const large_scale = 1 / 6;
+
         function resizeWindow() {
             // resize the canvas
             if (window.innerWidth <= 700) {
-                renderer.setSize(window.innerWidth / 3, window.innerWidth / 3);
+                renderer.setSize(window.innerWidth * small_scale, window.innerWidth * small_scale, false);
             } else {
-                renderer.setSize(window.innerWidth / 6, window.innerWidth / 6);
+                renderer.setSize(window.innerWidth * large_scale, window.innerWidth * large_scale, false);
             }
 
             // resize the image while we're at it
@@ -27,11 +30,12 @@ export function createScene() {
             console.log(image);
             if (image != [] && image != null) {
                 if (window.innerWidth <= 700) {
-                    image.style.width = window.innerWidth / 3;
-                    image.style.height = window.innerWidth / 3;
+                    image.style.width = window.innerWidth * small_scale;
+                    image.style.height = window.innerWidth * small_scale;
                 } else {
-                    image.style.width = window.innerWidth / 6;
-                    image.style.height = window.innerWidth / 6;
+                    image.style.width = window.innerWidth * large_scale;
+                    image.style.height = window.innerWidth * large_scale;
+                    console.log('resized image to ' + (window.innerWidth * large_scale));
                 }
             }
                 
@@ -52,6 +56,8 @@ export function createScene() {
         container.appendChild(renderer.domElement);
 
         renderer.domElement.className = "image-small";
+        renderer.domElement.style.marginLeft = "10%";
+        renderer.domElement.style.marginRight = "10%";
 
         const scene = new THREE.Scene();
 
@@ -85,6 +91,12 @@ export function createScene() {
         spotLight.lookAt(new THREE.Vector3(0, 0, 0));
         spotLight.castShadow = true;
         spotLight.shadow.bias = -0.0001;
+
+        spotLight.shadow.camera.left = -200;
+        spotLight.shadow.camera.right = 200;
+        spotLight.shadow.camera.top = 200;
+        spotLight.shadow.camera.bottom = -200;
+
         camera.add(spotLight);
 
         // const pointLight = new THREE.PointLight( 0xffffff );
@@ -120,8 +132,6 @@ export function createScene() {
 
                 frog_mesh.name = 'frog';
 
-                console.log(frog_mesh);
-
                 scene.add(frog_mesh);
             },
             function(xhr) {
@@ -136,7 +146,7 @@ export function createScene() {
         // dirLight.castShadow = true;
         // dirLight.position.set(-1, 1, -1);
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+        const ambientLight = new THREE.AmbientLight(0xaaaaaa, 0.7);
         scene.add(ambientLight);
 
 
