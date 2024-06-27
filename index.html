@@ -604,7 +604,7 @@
         var container = document.createElement('div');
         container.style.display = "block";
         container.style.textAlign = "center";
-        container.style.paddingTop = '2em'
+        container.style.paddingTop = '1.3em'
 
         var ifrm = document.createElement('iframe');
         
@@ -627,19 +627,26 @@
 
         var quit = document.createElement('a');
         // cross character
-        // quit.innerText = '\u{2716}';
-        quit.innerText = 'close';
+        quit.innerText = '\u{2716}';
+        // quit.innerText = 'close';
         quit.style.textAlign = 'center';
         quit.classList.add('link-general');
-        quit.style.marginLeft = '90.5%';
-        quit.style.marginRight = '9%';
+        quit.style.marginLeft = 'calc(90% + 2px)';
+        quit.style.marginRight = '10%';
+        quit.style.paddingRight = '4px';
+        quit.style.paddingLeft = '4px';
+        quit.style.paddingTop = '1px';
         quit.style.fontStyle = 'normal';
         quit.style.marginTop = '-1.5em';
+        quit.style.fontSize = 'larger';
         quit.onclick = function () {
             document.body.removeChild(container);
             navigation_enabled = true;
             showPage('contact');
         }
+        quit.style.outline = "0.1em solid var(--main-colour)";
+        quit.style.outlineOffset = '1px';
+        quit.style.textDecoration = 'none';
 
         // quitContainer.appendChild(quit);
         container.appendChild(quit);
