@@ -78,7 +78,7 @@
                 Download CV <a href="files/Adam Howard CV.pdf" target="_blank">here</a>.
             </p>
 
-            <h1>
+            <h1 id="dissertation">
                 Dissertation Project
             </h1>
 
@@ -127,13 +127,13 @@
     <div class="content-container" id="music" style="display: none;">
         <div class="body-text">
 
-            <h1>
+            <h1 id="music-spotlight">
                 Spotlight
             </h1>
 
             <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1680831294&color=%23343430&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/admh" title="adm" target="_blank" style="color: #cccccc; text-decoration: none;">adm</a> · <a href="https://soundcloud.com/admh/falling-out-of-the-sky-above-the-chinese-restaurant" title="falling out the sky, above the chinese restaurant" target="_blank" style="color: #cccccc; text-decoration: none;">falling out the sky, above the chinese restaurant</a></div>
 
-            <h1>
+            <h1 id="artist">
                 Profile
             </h1>        
             
@@ -223,11 +223,11 @@
                 
             </div>
 
-            <h1>
+            <h1 id="music-releases">
                 Releases
             </h1>
         
-            <h2>
+            <h2 id="jet-black">
                 Jet Black
             </h2>
             
@@ -275,7 +275,7 @@
             </div>
 
 
-            <h2>
+            <h2 id="astro-white">
                 Astro White
             </h2>
             
@@ -575,6 +575,16 @@
             page == 'contact'
         )) {
             showPage(page);
+        }
+
+        // scroll to an element
+        const target = urlParams.get('target');
+        if (target != null) {
+            // get the element
+            const element = document.getElementById(target);
+            if (element != null) {
+                element.scrollIntoView({block: "start", inline: "nearest"});
+            }
         }
 
         resize_links();
