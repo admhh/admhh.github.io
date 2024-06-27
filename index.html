@@ -109,10 +109,10 @@
             <p>
                 Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). Once a normal field is reconstructed, it can be integrated to give a surface.
                 <br><br>
-                The basic method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project then aims to implement and evaluate a robust algorithm on these trickier cases.
+                The basic method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project aims to derive, implement and evaluate a robust algorithm on these trickier cases.
                 <br><br>
                  <!-- The project implements the algorithm of <a>Ikehata et. al. (2012)</a> to accomodate for this, which is then extended using a smoothing technique introduced by <a>Jones, Durand and Zweiker (2004)</a>. -->
-                The project implements three main features:
+                The codebase contains three main features:
                 <ul>
                     <li>A pipeline for "corrupting" images with image noise and specular highlights.</li>
                     <li>A robust Sparse Bayesian Learning solver for Photometric Stereo (<a href="https://ieeexplore.ieee.org/abstract/document/6247691" target="_blank">Ikehata et al., 2012</a>).</li>
