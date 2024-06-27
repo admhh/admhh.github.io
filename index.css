@@ -192,10 +192,14 @@ body {
     fill: var(--main-colour);
 }
 
-.logo-container {
+a.logo-container {
     width: fit-content;
     display: flex;
     justify-content: center;
+}
+
+a.logo-container:hover {
+    background: none;
 }
 
 .icons {
