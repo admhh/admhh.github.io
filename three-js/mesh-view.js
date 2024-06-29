@@ -53,6 +53,7 @@ export function createScene() {
         // add the renderer to the document
         // document.body.appendChild(renderer.domElement);
         const container = document.getElementById('frog-container');
+        
         container.appendChild(renderer.domElement);
 
         renderer.domElement.className = "image-small";
@@ -103,6 +104,12 @@ export function createScene() {
         // const pointLight = new THREE.PointLight( 0xffffff );
         // pointLight.position.set(4,5,11);
         // camera.add(pointLight);
+
+        // const textElement = document.createElement('div');
+        // textElement.innerHTML = "loading";
+        // textElement.style.position = "absolute";
+        // textElement.style.zIndex = "100";
+        // renderer.domElement.appendChild(textElement);
 
         const loader = new OBJLoader();
 
