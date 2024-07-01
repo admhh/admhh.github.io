@@ -380,7 +380,7 @@
     var current_page = 'main';
 
     // is navbar open
-    var navbar_open = false;
+    var navbar_open = true;
 
     // decide whether to render in portrait (mobile) or landscape (desktop)
     document.getOrientation = function() {
@@ -462,6 +462,23 @@
             ) + "px";
 
             links[i].style.height = (link_height - (2 * (radius - (radius / Math.sqrt(2)))) + 2) + "px";
+
+            const link_text = links[i].childNodes[1];
+            link_text.innerText = link_text.innerText.replace(' ▼', '');
+
+            // add / remove triangles
+            if (links[i].id == current_page + "-link") {
+
+                links[i].className = "link active"
+
+                if (orientation == 'portrait' && !navbar_open) {
+
+                    link_text.innerText += ' ▼';
+                }
+
+            } else {
+                links[i].className = "link"
+            }
         }
 
         var navbars = document.querySelectorAll(".navbar");
@@ -473,7 +490,7 @@
         // this is not very robust - only works at regular text size
         text = document.getElementById("main-link-text");
 
-        if ((window.innerWidth <= 1072 && orientation == 'landscape') || window.innerWidth <= 314) {
+        if ((window.innerWidth <= 1072 && orientation == 'landscape') || window.innerWidth <= 345) {
             text.style.paddingTop = "0.24em";
         } else {
             text.style.paddingTop = "1.2em";
@@ -529,20 +546,17 @@
             // update appearance of nav links
             var links = document.querySelectorAll(".link");
             for (var i = 0; i < links.length; i++) {
+
+                const link_text = links[i].childNodes[1];
+                link_text.innerText = link_text.innerText.replace(' ▼', '');
+
                 if (links[i].id == key + "-link") {
 
                     links[i].className = "link active"
 
                     if (orientation == 'portrait' && !navbar_open) {
-                        // const arrow = document.createElement('p');
-                        // arrow.innerHTML = '▼';
-                        // arrow.id = 'nav-arrow';
-                        // arrow.className = 'link-text';
-                        // arrow.style.alignSelf = 'flex-end';
 
-                        // links[i].appendChild(arrow);
-                        const link_text = links[i].childNodes[0];
-                        link_text.innerHTML += ' ▼ ';
+                        link_text.innerText += ' ▼';
                     }
 
                 } else {
@@ -672,6 +686,9 @@
             page == 'contact'
         )) {
             showPage(page);
+        } else {
+            // defaults to main
+            showPage(current_page);
         }
 
         // scroll to an element
