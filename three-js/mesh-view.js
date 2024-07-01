@@ -113,15 +113,7 @@ export function createScene() {
         circle.translateY(1);
         scene.add( circle );
 
-        // const pointLight = new THREE.PointLight( 0xffffff );
-        // pointLight.position.set(4,5,11);
-        // camera.add(pointLight);
-
-        // const textElement = document.createElement('div');
-        // textElement.innerHTML = "loading";
-        // textElement.style.position = "absolute";
-        // textElement.style.zIndex = "100";
-        // renderer.domElement.appendChild(textElement);
+        var progress = 0.0;
 
         const loader = new OBJLoader();
 
@@ -161,20 +153,27 @@ export function createScene() {
             function(xhr) {
                 console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
-                scene.remove(circle);
-                geometry = new THREE.CircleGeometry(
-                    0.6, 
-                    1000,  
-                    0.5 * Math.PI, 
-                    // 0,
-                    Math.PI * 2 * ( xhr.loaded / xhr.total )
-                );
-                material = new THREE.MeshBasicMaterial( { color: colour } ); 
-                circle = new THREE.Mesh( geometry, material ); 
-                material.side = THREE.DoubleSide;
-                circle.rotateY(Math.PI);
-                circle.translateY(1);
-                scene.add( circle );
+                if (( xhr.loaded / xhr.total ) >= progress) {
+                    progress += 0.05;
+                    scene.remove(circle);
+                    geometry = new THREE.CircleGeometry(
+                        0.6,
+                        1000,
+                        0.5 * Math.PI,
+                        // 0,
+                        // Math.PI * 2 * ( xhr.loaded / xhr.total )
+                        Math.PI * 2 * progress
+                    );
+                    material = new THREE.MeshBasicMaterial( { color: colour } ); 
+                    circle = new THREE.Mesh( geometry, material ); 
+                    material.side = THREE.DoubleSide;
+                    circle.rotateY(Math.PI);
+                    circle.translateY(1);
+                    scene.add( circle );
+
+                }
+
+                
             },
             function ( error ) {
                 console.log( 'An error happened' );
