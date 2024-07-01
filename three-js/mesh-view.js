@@ -30,7 +30,7 @@ export function createScene() {
 
             // resize the image while we're at it
             const image = document.getElementById('dissertation-frog-image');
-            
+
             if (image != [] && image != null) {
                 if (orientation == 'portrait') {
                     image.style.width = window.innerWidth * small_scale;
@@ -107,7 +107,7 @@ export function createScene() {
         const colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
 
         // create loading circle
-        var geometry = new THREE.CircleGeometry( 0.6, 100, 1.5 * Math.PI, 0); 
+        var geometry = new THREE.CircleGeometry( 0.6, 6, 1.5 * Math.PI, 0); 
         var material = new THREE.MeshBasicMaterial( { color: colour } ); 
         material.side = THREE.DoubleSide;
         var circle = new THREE.Mesh( geometry, material ); 
@@ -159,7 +159,7 @@ export function createScene() {
                     scene.remove(circle);
                     geometry = new THREE.CircleGeometry(
                         0.6,
-                        1000,
+                        40,
                         0.5 * Math.PI,
                         // 0,
                         // Math.PI * 2 * ( xhr.loaded / xhr.total )
