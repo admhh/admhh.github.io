@@ -105,9 +105,11 @@ export function createScene() {
         const colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
 
         // create loading circle
-        var geometry = new THREE.CircleGeometry( 0.6, 100, 0, 0); 
+        var geometry = new THREE.CircleGeometry( 0.6, 100, 1.5 * Math.PI, 0); 
         var material = new THREE.MeshBasicMaterial( { color: colour } ); 
+        material.side = THREE.DoubleSide;
         var circle = new THREE.Mesh( geometry, material ); 
+        circle.rotateY(Math.PI);
         circle.translateY(1.3);
         scene.add( circle );
 
@@ -158,12 +160,18 @@ export function createScene() {
             },
             function(xhr) {
                 console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-                const newGeometry = new THREE.CircleGeometry(1.3, 100, 0, Math.PI * 2 * ( xhr.loaded / xhr.total * 100 ));
-                // circle.geometry = newGeometry;
+
                 scene.remove(circle);
-                geometry = new THREE.CircleGeometry( 0.6, 100, 0, Math.PI * 2 * ( xhr.loaded / xhr.total )); 
+                geometry = new THREE.CircleGeometry(
+                    1.3, 
+                    100,  
+                    1.5 * Math.PI, 
+                    Math.PI * 2 * ( xhr.loaded / xhr.total * 100 )
+                );
                 material = new THREE.MeshBasicMaterial( { color: colour } ); 
                 circle = new THREE.Mesh( geometry, material ); 
+                material.side = THREE.DoubleSide;
+                circle.rotateY(Math.PI);
                 circle.translateY(1);
                 scene.add( circle );
             },
