@@ -376,13 +376,25 @@
     // current colour
     var current_colour = 'green';
 
+    // decide whether to render in portrait (mobile) or landscape (desktop)
+    document.getOrientation = function() {
+        if (window.innerWidth <= 700 || (window.innerHeight / window.innerWidth) >= 2) {
+            return 'portrait';
+        } else {
+            return 'landscape';
+        }
+    }
+
     function resize_links() {
 
         var radius = 25;
         var link_height = 80;
 
         var link_width = Math.round(window.innerWidth / 5);
-        if (window.innerWidth <= 700) {
+
+        const orientation = document.getOrientation();
+
+        if (orientation == 'portrait') {
             link_width = window.innerWidth - 100;
 
             var navbars = document.querySelectorAll(".navbar");
@@ -434,7 +446,7 @@
         // this is not very robust - only works at regular text size
         text = document.getElementById("main-link-text");
 
-        if ((window.innerWidth <= 1072 && window.innerWidth > 700) || window.innerWidth <= 314) {
+        if ((window.innerWidth <= 1072 && orientation == 'landscape') || window.innerWidth <= 314) {
             text.style.paddingTop = "0.24em";
         } else {
             text.style.paddingTop = "1.2em";
@@ -442,7 +454,7 @@
 
         text = document.getElementById("work-link-text");
 
-        if ((window.innerWidth <= 777 && window.innerWidth > 700) || window.innerWidth <= 255) {
+        if ((window.innerWidth <= 777 && orientation == 'landscape') || window.innerWidth <= 255) {
             text.style.paddingTop = "0.24em";
         } else {
             text.style.paddingTop = "1.2em";

@@ -18,8 +18,11 @@ export function createScene() {
         const large_scale = 1 / 6;
 
         function resizeWindow() {
+
+            const orientation = document.getOrientation();
+            
             // resize the canvas
-            if (window.innerWidth <= 700) {
+            if (orientation == 'portrait') {
                 renderer.setSize(window.innerWidth * small_scale, window.innerWidth * small_scale, false);
             } else {
                 renderer.setSize(window.innerWidth * large_scale, window.innerWidth * large_scale, false);
@@ -29,13 +32,12 @@ export function createScene() {
             const image = document.getElementById('dissertation-frog-image');
             console.log(image);
             if (image != [] && image != null) {
-                if (window.innerWidth <= 700) {
+                if (orientation == 'portrait') {
                     image.style.width = window.innerWidth * small_scale;
                     image.style.height = window.innerWidth * small_scale;
                 } else {
                     image.style.width = window.innerWidth * large_scale;
                     image.style.height = window.innerWidth * large_scale;
-                    console.log('resized image to ' + (window.innerWidth * large_scale));
                 }
             }
                 
