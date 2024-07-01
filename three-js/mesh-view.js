@@ -78,7 +78,7 @@ export function createScene() {
         controls.maxDistance = 200;
         // controls.minPolarAngle = 0.5;
         // controls.maxPolarAngle = 1.5;
-        controls.autoRotate = true;
+        controls.autoRotate = false;
         controls.autoRotateSpeed = 2.5;
         controls.target = new THREE.Vector3(0, 1, 0);
         controls.update();
@@ -100,6 +100,16 @@ export function createScene() {
         spotLight.shadow.camera.bottom = -200;
 
         camera.add(spotLight);
+
+        // get site colour 
+        const colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
+
+        // create loading circle
+        var geometry = new THREE.CircleGeometry( 0.6, 100, 0, 0); 
+        var material = new THREE.MeshBasicMaterial( { color: colour } ); 
+        var circle = new THREE.Mesh( geometry, material ); 
+        circle.translateY(1.3);
+        scene.add( circle );
 
         // const pointLight = new THREE.PointLight( 0xffffff );
         // pointLight.position.set(4,5,11);
@@ -140,10 +150,22 @@ export function createScene() {
 
                 frog_mesh.name = 'frog';
 
+                controls.autoRotate = true;
+
                 scene.add(frog_mesh);
+
+                scene.remove(circle);
             },
             function(xhr) {
                 console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                const newGeometry = new THREE.CircleGeometry(1.3, 100, 0, Math.PI * 2 * ( xhr.loaded / xhr.total * 100 ));
+                // circle.geometry = newGeometry;
+                scene.remove(circle);
+                geometry = new THREE.CircleGeometry( 0.6, 100, 0, Math.PI * 2 * ( xhr.loaded / xhr.total )); 
+                material = new THREE.MeshBasicMaterial( { color: colour } ); 
+                circle = new THREE.Mesh( geometry, material ); 
+                circle.translateY(1);
+                scene.add( circle );
             },
             function ( error ) {
                 console.log( 'An error happened' );
