@@ -110,7 +110,7 @@ export function createScene() {
         material.side = THREE.DoubleSide;
         var circle = new THREE.Mesh( geometry, material ); 
         circle.rotateY(Math.PI);
-        circle.translateY(1.3);
+        circle.translateY(1);
         scene.add( circle );
 
         // const pointLight = new THREE.PointLight( 0xffffff );
@@ -165,8 +165,9 @@ export function createScene() {
                 geometry = new THREE.CircleGeometry(
                     1.3, 
                     100,  
-                    1.5 * Math.PI, 
-                    Math.PI * 2 * ( xhr.loaded / xhr.total * 100 )
+                    0.5 * Math.PI, 
+                    // 0,
+                    Math.PI * 2 * ( xhr.loaded / xhr.total )
                 );
                 material = new THREE.MeshBasicMaterial( { color: colour } ); 
                 circle = new THREE.Mesh( geometry, material ); 
