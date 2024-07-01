@@ -38,6 +38,19 @@ body {
     border-bottom: 0.1em solid var(--main-colour);
 }
 
+@media only screen and (max-width: 700px) {
+    .navbar {
+        gap: 10px;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .navbar {
+        gap: 0px;
+    }
+}
+
+
 /* ================================================== link-outer ================================================== */
 
 .link-outer {
