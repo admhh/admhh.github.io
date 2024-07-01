@@ -5,7 +5,7 @@
 <title>Adam Howard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="imgs/admh.jpg">
+<link rel="icon" href="imgs/favicons/green.png">
 
 <link rel="stylesheet" href="index.css">
 
@@ -645,6 +645,15 @@
 
         // update current colour
         current_colour = colour;
+
+        // update favicon
+        var link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.head.appendChild(link);
+        }
+        link.href = './imgs/favicons/' + colour + '.png';
     }
 
     function cycleFrog() {
