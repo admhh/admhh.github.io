@@ -376,6 +376,12 @@
     // current colour
     var current_colour = 'green';
 
+    // current page
+    var current_page = 'main';
+
+    // is navbar open
+    var navbar_open = false;
+
     // decide whether to render in portrait (mobile) or landscape (desktop)
     document.getOrientation = function() {
         if (window.innerWidth <= 700 || (window.innerHeight / window.innerWidth) >= 2) {
@@ -387,12 +393,33 @@
 
     function resize_links() {
 
+        const orientation = document.getOrientation();
+
+        if (orientation == 'portrait') {
+            // hide all other navigation buttons
+            var links_outer = document.querySelectorAll(".link-outer");
+            for (var i = 0; i < links_outer.length; i++) {
+                if (links_outer[i].id == current_page + "-link-outer") {
+                    links_outer[i].style.display = "flex"
+                } else {
+                    links_outer[i].style.display = "none"
+                }
+            }
+
+            navbar_open = false;
+        
+        } else {
+            // show all navigation buttons
+            var links_outer = document.querySelectorAll(".link-outer");
+            for (var i = 0; i < links_outer.length; i++) {
+                links_outer[i].style.display = "flex"
+            }
+        }
+
         var radius = 25;
         var link_height = 80;
 
         var link_width = Math.round(window.innerWidth / 5);
-
-        const orientation = document.getOrientation();
 
         if (orientation == 'portrait') {
             link_width = window.innerWidth - 100;
@@ -464,11 +491,60 @@
     function showPage(key) {
 
         if (navigation_enabled) {
+
+            // if in portrait mode, hide other headers
+            const orientation = document.getOrientation();
+
+            if (orientation == 'portrait' && navbar_open) {
+                // hide all other navigation buttons
+                var links_outer = document.querySelectorAll(".link-outer");
+                for (var i = 0; i < links_outer.length; i++) {
+                    if (links_outer[i].id == key + "-link-outer") {
+
+                        links_outer[i].style.display = "flex"
+
+                    } else {
+
+                        links_outer[i].style.display = "none"
+                        const arrow = document.getElementById('nav-arrow');
+                        if (arrow != null && links_outer[i].id == key + "-link-outer") {
+                            links_outer[i].removeChild(arrow);
+                        }
+
+                    }
+                }
+
+                navbar_open = false;
+
+            } else {
+                // show all navigation buttons
+                var links_outer = document.querySelectorAll(".link-outer");
+                for (var i = 0; i < links_outer.length; i++) {
+                    links_outer[i].style.display = "flex"
+                }
+
+                navbar_open = true;
+            }
+
             // update appearance of nav links
             var links = document.querySelectorAll(".link");
             for (var i = 0; i < links.length; i++) {
                 if (links[i].id == key + "-link") {
+
                     links[i].className = "link active"
+
+                    if (orientation == 'portrait' && !navbar_open) {
+                        // const arrow = document.createElement('p');
+                        // arrow.innerHTML = '▼';
+                        // arrow.id = 'nav-arrow';
+                        // arrow.className = 'link-text';
+                        // arrow.style.alignSelf = 'flex-end';
+
+                        // links[i].appendChild(arrow);
+                        const link_text = links[i].childNodes[0];
+                        link_text.innerHTML += ' ▼ ';
+                    }
+
                 } else {
                     links[i].className = "link"
                 }
@@ -498,6 +574,8 @@
                 window.createScene();
             }
         }
+
+        current_page = key;
 
     }
 

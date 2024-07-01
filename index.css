@@ -48,6 +48,7 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
+    flex-direction: row;
 }
 
 .link-outer.active {
@@ -83,7 +84,7 @@ body {
     
     flex-direction: column-reverse;
     justify-content:center;
-    align-items:flex-end;
+    align-items:flex-start;
 }
 
 /* nice values to initialize with */
@@ -119,9 +120,9 @@ body {
     text-decoration:none;
     font-weight:bolder;
     font-size:x-large;
-    width:100%;
+    /* width:100%; */
 
-    padding-left: 0.4em;
+    /* padding-left: 0.4em; */
     padding-top: 1.2em;
 }
 

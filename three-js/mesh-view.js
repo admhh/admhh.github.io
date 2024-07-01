@@ -30,7 +30,7 @@ export function createScene() {
 
             // resize the image while we're at it
             const image = document.getElementById('dissertation-frog-image');
-            console.log(image);
+            
             if (image != [] && image != null) {
                 if (orientation == 'portrait') {
                     image.style.width = window.innerWidth * small_scale;
@@ -153,7 +153,6 @@ export function createScene() {
                 scene.remove(circle);
             },
             function(xhr) {
-                console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
                 if (( xhr.loaded / xhr.total ) >= progress) {
                     progress += 0.05;
