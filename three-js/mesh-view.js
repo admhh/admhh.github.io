@@ -163,7 +163,7 @@ export function createScene() {
 
                 scene.remove(circle);
                 geometry = new THREE.CircleGeometry(
-                    1.3, 
+                    0.6, 
                     100,  
                     0.5 * Math.PI, 
                     // 0,
