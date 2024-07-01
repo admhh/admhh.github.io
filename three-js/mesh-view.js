@@ -102,7 +102,7 @@ export function createScene() {
         camera.add(spotLight);
 
         // get site colour 
-        const colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
+        const colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
 
         // create loading circle
         var geometry = new THREE.CircleGeometry( 0.6, 100, 0, 0); 
