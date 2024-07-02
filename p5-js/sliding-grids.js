@@ -3,9 +3,15 @@ var RESOLUTION = 128;
 
 var points = [];
 
-createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
-createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
-createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+for (let i=0; i<getRandomInt(1, 4); i++) {
+  createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
+}
+for (let i=0; i<getRandomInt(1, 4); i++) {
+  createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
+}
+for (let i=0; i<getRandomInt(1, 4); i++) {
+  createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+}
 
 function createPoint(x, y, start, end) {
   points.push(
@@ -97,21 +103,37 @@ function normalizeGaps(list) {
   
 }
 
-function windowResized() {
-    const orientation = document.getOrientation();
 
+function resizeGraphics() {
+    // also resize gif
+    const gif = document.getElementById('sliding-grids-gif');
+
+    const orientation = document.getOrientation();
 
     if (orientation == 'portrait') {
         resizeCanvas(window.innerWidth * small_scale, window.innerWidth * small_scale);
+
+        gif.style.width = window.innerWidth * small_scale;
+        gif.style.height = window.innerWidth * small_scale;
+
         RESOLUTION = window.innerWidth * small_scale;
     } else {
         resizeCanvas(window.innerWidth * large_scale, window.innerWidth * large_scale);
+
+        gif.style.width = window.innerWidth * large_scale;
+        gif.style.height = window.innerWidth * large_scale;
+
         RESOLUTION = window.innerWidth * large_scale;
     }
-
-
-
 }
+
+// function windowResized() {
+//   resizeCanvas();
+// }
+
+window.addEventListener('resize', () => {
+  resizeGraphics();
+});
 
 function setup() {
 
@@ -127,6 +149,7 @@ function setup() {
     RESOLUTION = window.innerWidth * large_scale;
   }
   
+  resizeGraphics();
   
   frameRate(60);
 
@@ -138,10 +161,6 @@ function setup() {
 function draw() {
   
   noSmooth();
-
-
-
-
   
   const main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
   
@@ -157,10 +176,16 @@ function draw() {
   
   if (frame == 0) {
     points = [];
-  
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+    
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
+    }
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
+    }
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+    }
   }
 
   
