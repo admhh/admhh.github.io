@@ -3,6 +3,10 @@ var RESOLUTION = 128;
 
 var points = [];
 
+createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
+createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
+createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+
 function createPoint(x, y, start, end) {
   points.push(
     {
@@ -14,9 +18,11 @@ function createPoint(x, y, start, end) {
   );
 }
 
-createPoint(3, 5, 20, 30);
-createPoint(10, 12, 52, 62);
-createPoint(14, 2, 84, 94);
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+  }
 
 // // 1
 // createPoint(8, 6, 20, 52);
@@ -61,8 +67,8 @@ createPoint(14, 2, 84, 94);
 // createPoint(7, 10, 84, 118);
 // createPoint(9, 10, 84, 118);
 
-const FADE = 10;
-const FRAMES = 128;
+const FADE = 30;
+const FRAMES = 256;
 const SPEED = 1;
 
 const POINT_WIDTH = 0.29;
@@ -78,11 +84,14 @@ function pointWeight(center, pos) {
 
 function normalizeGaps(list) {
   
-  const maxVal = list[list.length - 1];
   
   const minVal = list[0];
+
+  let zeroedList = list.map((gap) => (gap - minVal));
+
+  const maxVal = zeroedList[list.length - 1];
   
-  let normalizedList = list.map((gap) => (((gap - minVal) / maxVal) * RESOLUTION));
+  let normalizedList = zeroedList.map((gap) => ((gap / maxVal) * RESOLUTION));
   
   return normalizedList;
   
@@ -129,6 +138,10 @@ function setup() {
 function draw() {
   
   noSmooth();
+
+
+
+
   
   const main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
   
@@ -141,6 +154,15 @@ function draw() {
   strokeWeight(RESOLUTION / 128);
   
   var frame = Math.floor(frameCount * SPEED) % FRAMES;
+  
+  if (frame == 0) {
+    points = [];
+  
+    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
+    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
+    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+  }
+
   
   // draw the basic horizontal grid lines 
   var horizontalGaps = [];
