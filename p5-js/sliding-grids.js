@@ -1,3 +1,29 @@
+// don't run animation when off screen
+let options = {
+  rootMargin: "0px",
+  threshold: 0.2,
+};
+
+let observer = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) {
+      try {
+        noLoop();
+      } catch {
+        // not much to do yet
+      }
+      // console.log('exited');
+    } else {
+      loop();
+      // console.log('entered');
+    }
+}, options);
+
+let target = document.getElementById("sliding-grids-canvas");
+observer.observe(target);
+
+
+
+
 const PIXELS = 16;
 var RESOLUTION = 128;
 
@@ -75,7 +101,7 @@ function getRandomInt(min, max) {
 
 const FADE = 30;
 const FRAMES = 256;
-const SPEED = 1;
+const SPEED = 1.7;
 
 const POINT_WIDTH = 0.29;
 const POINT_HEIGHT = 45;
@@ -89,7 +115,6 @@ function pointWeight(center, pos) {
 }
 
 function normalizeGaps(list) {
-  
   
   const minVal = list[0];
 
@@ -151,9 +176,11 @@ function setup() {
   
   resizeGraphics();
   
-  frameRate(60);
+  frameRate(30);
 
   console.log('p5 script ran');
+
+  noLoop();
   
   // saveGif('sliding-grids', 128, {units: 'frames'});
 }
@@ -260,7 +287,7 @@ function draw() {
     if (Math.round(gap) <= prev+2) {
       continue;
     }
-    for (let i=0; i<10; i++) {
+    for (let i=0; i<3; i++) {
       line(0, Math.round(gap), RESOLUTION, Math.round(gap));
       prev = Math.round(gap);
     }
@@ -270,7 +297,7 @@ function draw() {
     let verticalGaps = normalizeGaps(verticalRows[i]);
   
     for (let gap of verticalGaps) {
-      for (let j=0; j<10; j++) {
+      for (let j=0; j<3; j++) {
         line(Math.round(gap), Math.round(horizontalGaps[i]), Math.round(gap), Math.round(horizontalGaps[i+1]));
       }
     }

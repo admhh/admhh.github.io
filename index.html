@@ -29,7 +29,7 @@
 <!-- import p5.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
 
-<script src="./p5-js/sliding-grids.js"></script>
+<script src="./p5-js/sliding-grids.js" defer></script>
 
 </head>
 <body>
@@ -58,7 +58,7 @@
     </div>
 </div>
 
-<div class="content">
+<div class="content" id="content">
 
     <div class="content-container" id="main" style="display: block;">
 
@@ -101,7 +101,10 @@
                 Interactive version coming soon!
             </p>
 
-            <canvas class="image-small" id="sliding-grids-canvas" style="margin: auto;"></canvas>
+            <div style="display: flex; align-items: center;">
+                <canvas class="image-small" id="sliding-grids-canvas" style="margin: auto;"></canvas>
+                <!-- <p style="margin: auto;">Enter sequence: <input type="text"></p> -->
+            </div>
 
             <h1 id="dissertation">
                 Dissertation Project
@@ -414,6 +417,14 @@
         } else {
             return 'landscape';
         }
+    }
+
+    // check if an element is visible on page
+    // https://stackoverflow.com/questions/5353934/check-if-element-is-visible-on-screen
+    document.checkVisible = function(elm) {
+        var rect = elm.getBoundingClientRect();
+        var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+        return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
     }
 
     function resize_links() {

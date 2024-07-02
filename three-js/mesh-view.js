@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
 var scene_created = false;
+var frog_grabbed = false;
 
 export function createScene() {
 
@@ -62,6 +63,7 @@ export function createScene() {
         renderer.domElement.style.marginLeft = "10%";
         renderer.domElement.style.marginRight = "10%";
         renderer.domElement.style.cursor = "pointer";
+        renderer.domElement.id = "frog-renderer";
 
         const scene = new THREE.Scene();
 
@@ -88,6 +90,7 @@ export function createScene() {
         // when the frog is grabbed, stop autorotate
         renderer.domElement.addEventListener('click', function () {
             controls.autoRotate = false;
+            frog_grabbed = true;
         });
 
         const spotLight = new THREE.SpotLight(0xffffff, 1, 0, Math.PI, 1, 0);
@@ -181,10 +184,6 @@ export function createScene() {
             }
         );
 
-        // const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
-        // dirLight.castShadow = true;
-        // dirLight.position.set(-1, 1, -1);
-
         const ambientLight = new THREE.AmbientLight(0xaaaaaa, 0.7);
         scene.add(ambientLight);
 
@@ -195,14 +194,34 @@ export function createScene() {
 
 
         function animate() {
-            // const frog_mesh = scene.getObjectByName('frog');
             requestAnimationFrame(animate);
             controls.update();
             renderer.render(scene, camera);
-
-            // rotate the camera a little bit
-            // camera.rotateX(Math.PI / 1000);
         }
+        
+
+        // deactivate three js when off screen
+        let options = {
+            rootMargin: "0px",
+            threshold: 0.1,
+        };
+        
+        let observer = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) {
+                try {
+                    controls.autoRotate = false;
+                } catch {
+                // not much to do yet
+                }
+            } else {
+                if (!frog_grabbed) {
+                    controls.autoRotate = true;
+                }
+            }
+        }, options);
+        
+        let target = document.getElementById("frog-renderer");
+        observer.observe(target);
 
         animate();
 
