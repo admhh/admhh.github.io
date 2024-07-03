@@ -248,6 +248,8 @@ const POINT_HEIGHT = 45;
 const small_scale = 1 / 3;
 const large_scale = 1 / 10;
 
+var frameOffset = 0;
+
 function pointWeight(center, pos) {
   // gaussian function, with scaling for resolution
   return POINT_HEIGHT * Math.exp(-((center - pos) ** 2) / (2 * POINT_WIDTH)) * (RESOLUTION / 128);
@@ -299,30 +301,49 @@ window.addEventListener('resize', () => {
   resizeGraphics();
 });
 
+const inputBox = document.getElementById('sliding-grids-pattern-input');
+const playButton = document.getElementById('sliding-grids-play');
 
-var pattern = '0123456789';
+function updatePattern() {
+  points = [];
+
+  update_frame_offset = true;
+
+  console.log('updating pattern');
+
+  let pattern = inputBox.value;
+
+  if (pattern == '') {
+    use_random_pattern = true;
+  
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
+    }
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
+    }
+    for (let i=0; i<getRandomInt(1, 4); i++) {
+      createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
+    }
+  
+    // FADE = 30;
+  
+  } else {
+  
+    use_random_pattern = false;
+
+    addMessage(pattern);
+  
+  }
+}
+
+playButton.addEventListener('click', () => {updatePattern()});
 
 var use_random_pattern = false;
-if (pattern == '') {
-  use_random_pattern = true;
 
-  for (let i=0; i<getRandomInt(1, 4); i++) {
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 50, 60);
-  }
-  for (let i=0; i<getRandomInt(1, 4); i++) {
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 120, 130);
-  }
-  for (let i=0; i<getRandomInt(1, 4); i++) {
-    createPoint(getRandomInt(1, PIXELS+1), getRandomInt(1, PIXELS+1), 190, 200);
-  }
+var update_frame_offset = false;
 
-  FADE = 30;
-
-} else {
-
-  addMessage(pattern);
-
-}
+updatePattern();
 
 function setup() {
 
@@ -362,8 +383,13 @@ function draw() {
   stroke(main_colour);
   
   strokeWeight(RESOLUTION / 128);
+
+  if (update_frame_offset) {
+    frameOffset = frameCount;
+    update_frame_offset = false;
+  }
   
-  var frame = Math.floor(frameCount * SPEED) % FRAMES;
+  var frame = Math.floor((frameCount - frameOffset) * SPEED) % FRAMES;
   
   if (frame == 0 && use_random_pattern) {
     points = [];

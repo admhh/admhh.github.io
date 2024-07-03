@@ -200,6 +200,19 @@ body {
     color: var(--secondary-colour);
 }
 
+.body-text input[type="text"] {
+    font-weight: 600;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: var(--main-colour);
+    border: none;
+    border-bottom: 1px solid var(--main-colour);
+}
+
+.body-text input[type="text"]:focus {
+    /* border: none; */
+    outline: none;
+}
 
 .logo {
     width: 50%;
