@@ -297,9 +297,6 @@ window.addEventListener('resize', () => {
   resizeGraphics();
 });
 
-const inputBox = document.getElementById('sliding-grids-pattern-input');
-const playButton = document.getElementById('sliding-grids-play');
-
 function updatePattern() {
   points = [];
 
@@ -352,6 +349,15 @@ background_colour_choice.oninput = function () {
   secondary_colour = background_colour_choice.value;
   colour_chosen = true;
 }
+
+const inputBox = document.getElementById('sliding-grids-pattern-input');
+const playButton = document.getElementById('sliding-grids-play');
+
+inputBox.addEventListener('keypress', (e) => {
+  if (e.code == 'Enter') {
+    updatePattern();
+  }
+})
 
 playButton.addEventListener('click', () => {updatePattern()});
 
