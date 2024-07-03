@@ -218,16 +218,12 @@ function addMessage(message) {
   
   for (let i=0; i < message.length; i++) {
 
-    console.log(cursor);
-
     addChar(message.charAt(i), cursor, cursor+32);
 
     cursor += 32;
   }
 
   FRAMES = (message.length + 1) * 32;
-
-  console.log(FRAMES);
 }
 
 
@@ -309,8 +305,6 @@ function updatePattern() {
 
   update_frame_offset = true;
 
-  console.log('updating pattern');
-
   let pattern = inputBox.value;
 
   if (pattern == '') {
@@ -335,6 +329,28 @@ function updatePattern() {
     addMessage(pattern);
   
   }
+}
+
+
+  
+var main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
+  
+var secondary_colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
+
+var colour_chosen = false;
+
+const main_colour_choice_wrapper = document.getElementById('colour-picker-wrapper-sliding-grids-main');
+const main_colour_choice = document.getElementById('colour-picker-sliding-grids-main');
+main_colour_choice.oninput = function () {
+  main_colour = main_colour_choice.value;
+  colour_chosen = true;
+}
+
+const background_colour_choice_wrapper = document.getElementById('colour-picker-wrapper-sliding-grids-background');
+const background_colour_choice = document.getElementById('colour-picker-sliding-grids-background');
+background_colour_choice.oninput = function () {
+  secondary_colour = background_colour_choice.value;
+  colour_chosen = true;
 }
 
 playButton.addEventListener('click', () => {updatePattern()});
@@ -363,8 +379,6 @@ function setup() {
   
   frameRate(30);
 
-  console.log('p5 script ran');
-
   noLoop();
   
   // saveGif('sliding-grids', 128, {units: 'frames'});
@@ -373,10 +387,14 @@ function setup() {
 function draw() {
   
   noSmooth();
+
+  if (!colour_chosen) {
+    main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
   
-  const main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
-  
-  const secondary_colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
+    secondary_colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
+  }
+
+  main_colour_choice_wrapper.style.background = main_colour;
 
   background(secondary_colour);
   
