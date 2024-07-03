@@ -240,7 +240,7 @@ function getRandomInt(min, max) {
 
 var FADE = 7;
 var FRAMES = 256;
-const SPEED = 1;
+const SPEED = 1.7;
 
 const POINT_WIDTH = 0.29;
 const POINT_HEIGHT = 45;
@@ -340,7 +340,7 @@ function setup() {
   
   resizeGraphics();
   
-  frameRate(60);
+  frameRate(30);
 
   console.log('p5 script ran');
 
