@@ -384,7 +384,7 @@
         <button id="colour-blue" onclick="setColour('blue')" style="position: fixed; bottom: 50px; right: 50px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-blue); border: none;"></button>
         <!-- https://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-inputtype-color -->
         <div id="colour-picker-wrapper" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--custom-colour); border: none;">
-            <input type="color" id="colour-custom" onclick="setColour(this.value)" oninput="setColour(this.value)" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--custom-colour); border: none; opacity: 0;">
+            <input type="color" id="colour-custom" onclick="setColour(this.value, false)" oninput="setColour(this.value, false)" onchange="setColour(this.value, true)" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--custom-colour); border: none; opacity: 0;">
         
             <svg id="colour-picker-pen" xmlns="http://www.w3.org/2000/svg" viewBox="-22 -25 162.88 161.51"><title>Pick Colour</title>
                 <path 
@@ -404,7 +404,7 @@
     // Get the root element
     var r = document.querySelector(':root');
 
-    // tracker for state of colour picker
+    // tracker for state of colour pickers
     var picker_open = false;
 
     // tracker for frog image
@@ -429,14 +429,6 @@
         } else {
             return 'landscape';
         }
-    }
-
-    // check if an element is visible on page
-    // https://stackoverflow.com/questions/5353934/check-if-element-is-visible-on-screen
-    document.checkVisible = function(elm) {
-        var rect = elm.getBoundingClientRect();
-        var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-        return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
     }
 
     function resize_links() {
@@ -645,12 +637,12 @@
         // show colour picker element
 
         if (picker_open) {
-            // var colour_pickers = document.querySelectorAll(".colour-picker");
-            // for (var i = 0; i < colour_pickers.length; i++) {
-            //     colour_pickers[i].style.display = "none"
-            // }
+            var colour_pickers = document.querySelectorAll(".colour-picker");
+            for (var i = 0; i < colour_pickers.length; i++) {
+                colour_pickers[i].style.display = "none"
+            }
 
-            // picker_open = false;
+            picker_open = false;
 
         } else {
             var colour_pickers = document.querySelectorAll(".colour-picker");
@@ -678,7 +670,7 @@
     //     }
     // }, true); 
 
-    function setColour(colour) {
+    function setColour(colour, close=true) {
         // if standard colour
         if (
             colour == "red" || colour == "green" || colour == "blue"
@@ -697,10 +689,14 @@
         r.style.setProperty('--main-colour', colour_val);
 
         // hide colour picker element
-        // var colour_pickers = document.querySelectorAll(".colour-picker");
-        // for (var i = 0; i < colour_pickers.length; i++) {
-        //     colour_pickers[i].style.display = "none"
-        // }
+        if (close) {
+            var colour_pickers = document.querySelectorAll(".colour-picker");
+            for (var i = 0; i < colour_pickers.length; i++) {
+                colour_pickers[i].style.display = "none"
+            }
+
+            picker_open = false;
+        }
 
         // update current colour
         current_colour = colour;
