@@ -75,6 +75,12 @@ body {
         margin: auto;
         width: 80vw;
         flex-direction: column;
+
+        display: none;
+    }
+
+    .link-outer.active {
+        display: flex;
     }
 }
 
