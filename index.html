@@ -645,12 +645,12 @@
         // show colour picker element
 
         if (picker_open) {
-            var colour_pickers = document.querySelectorAll(".colour-picker");
-            for (var i = 0; i < colour_pickers.length; i++) {
-                colour_pickers[i].style.display = "none"
-            }
+            // var colour_pickers = document.querySelectorAll(".colour-picker");
+            // for (var i = 0; i < colour_pickers.length; i++) {
+            //     colour_pickers[i].style.display = "none"
+            // }
 
-            picker_open = false;
+            // picker_open = false;
 
         } else {
             var colour_pickers = document.querySelectorAll(".colour-picker");
@@ -665,17 +665,18 @@
 
     // close colour picker when clicking elsewhere
     // this doesn't *always* work but maybe close enough
-    document.body.addEventListener('click', function() {
-        if (picker_open) {
-            var colour_pickers = document.querySelectorAll(".colour-picker");
-            for (var i = 0; i < colour_pickers.length; i++) {
-                colour_pickers[i].style.display = "none"
-            }
 
-            picker_open = false;
+    // document.body.addEventListener('click', function() {
+    //     if (picker_open) {
+    //         var colour_pickers = document.querySelectorAll(".colour-picker");
+    //         for (var i = 0; i < colour_pickers.length; i++) {
+    //             colour_pickers[i].style.display = "none"
+    //         }
 
-        }
-    }, true); 
+    //         picker_open = false;
+
+    //     }
+    // }, true); 
 
     function setColour(colour) {
         // if standard colour
@@ -696,10 +697,10 @@
         r.style.setProperty('--main-colour', colour_val);
 
         // hide colour picker element
-        var colour_pickers = document.querySelectorAll(".colour-picker");
-        for (var i = 0; i < colour_pickers.length; i++) {
-            colour_pickers[i].style.display = "none"
-        }
+        // var colour_pickers = document.querySelectorAll(".colour-picker");
+        // for (var i = 0; i < colour_pickers.length; i++) {
+        //     colour_pickers[i].style.display = "none"
+        // }
 
         // update current colour
         current_colour = colour;
