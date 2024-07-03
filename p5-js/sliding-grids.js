@@ -89,15 +89,15 @@ function addChar(char, begin, end) {
 
     case '4':
       
-      createPoint(10, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
       createPoint(5, 6, begin+1, end+1);
-      createPoint(10, 7, begin, end);
+      createPoint(12, 7, begin, end);
       createPoint(5, 7, begin, end);
       createPoint(6, 8, begin, end);
-      createPoint(10, 8, begin, end);
-      createPoint(10, 9, begin, end);
-      createPoint(10, 10, begin+1, end+1);
-      createPoint(10, 11, begin+1, end+1);
+      createPoint(12, 8, begin, end);
+      createPoint(12, 9, begin, end);
+      createPoint(12, 10, begin+1, end+1);
+      createPoint(12, 11, begin+1, end+1);
       break;
 
     case '5':
