@@ -383,8 +383,8 @@
         <button id="colour-green" onclick="setColour('green')" style="position: fixed; bottom: 90px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-green); border: none;"></button>
         <button id="colour-blue" onclick="setColour('blue')" style="position: fixed; bottom: 50px; right: 50px; width: 40px; height: 40px; cursor: pointer; background-color: var(--colour-blue); border: none;"></button>
         <!-- https://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-inputtype-color -->
-        <div id="colour-picker-wrapper" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--main-colour); border: none;">
-            <input type="color" id="colour-black" onclick="setColour(this.value)" oninput="setColour(this.value)" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--main-colour); border: none; opacity: 0;">
+        <div id="colour-picker-wrapper" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--custom-colour); border: none;">
+            <input type="color" id="colour-custom" onclick="setColour(this.value)" oninput="setColour(this.value)" style="position: fixed; bottom: 50px; right: 10px; width: 40px; height: 40px; cursor: pointer; background-color: var(--custom-colour); border: none; opacity: 0;">
         
             <svg id="colour-picker-pen" xmlns="http://www.w3.org/2000/svg" viewBox="-22 -25 162.88 161.51"><title>Pick Colour</title>
                 <path 
@@ -689,6 +689,7 @@
         } else {
             console.log(colour);
             var colour_val = colour;
+            r.style.setProperty('--custom-colour', colour_val);
         }
         
 
@@ -735,12 +736,14 @@
         const urlParams = new URLSearchParams(queryString);
 
         const colour = urlParams.get('colour');
-        if (colour != null && (
-            colour == 'red' ||
-            colour == 'green' ||
-            colour == 'blue' ||
-            colour == 'black'
-        )) {
+        if (colour != null 
+            // && (
+            //     colour == 'red' ||
+            //     colour == 'green' ||
+            //     colour == 'blue' ||
+            //     colour == 'black'
+            // )
+        ) {
             setColour(colour);
         }
 

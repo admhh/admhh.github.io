@@ -8,7 +8,8 @@
     --colour-red: #FF0000;
     --colour-blue: #3333EE;
     --colour-green: #2b5f2b;
-    --colour-black: #000000;
+
+    --custom-colour: #000000;
 
     --navbar-button-radius: 25px;
     --navbar-button-height: 80px;
