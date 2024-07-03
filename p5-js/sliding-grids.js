@@ -395,6 +395,7 @@ function draw() {
   }
 
   main_colour_choice_wrapper.style.background = main_colour;
+  background_colour_choice_wrapper.style.background = secondary_colour;
 
   background(secondary_colour);
   
