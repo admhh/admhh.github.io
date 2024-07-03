@@ -397,7 +397,11 @@ function draw() {
   if (!colour_chosen) {
     main_colour = getComputedStyle(document.body).getPropertyValue('--main-colour');
   
+    main_colour_choice.value = main_colour;
+
     secondary_colour = getComputedStyle(document.body).getPropertyValue('--secondary-colour');
+    
+    background_colour_choice.value = secondary_colour;
   }
 
   main_colour_choice_wrapper.style.background = main_colour;
