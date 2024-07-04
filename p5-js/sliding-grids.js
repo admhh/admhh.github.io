@@ -662,13 +662,16 @@ function addChar(char, begin, end) {
       break;
 
     case '!':
-      createPoint(8, 6, begin+1, end+1);
-      createPoint(8, 7, begin+1, end+1);
+      createPoint(8, 4, begin+1, end+1);
+      createPoint(8, 5, begin+1, end+1);
+      createPoint(8, 6, begin, end);
+      createPoint(8, 7, begin, end);
       createPoint(8, 8, begin, end);
       // createPoint(8, 9, begin, end);
       // createPoint(8, 10, begin, end);
       // createPoint(8, 11, begin+1, end+1);
       createPoint(8, 12, begin+1, end+1);
+      createPoint(8, 13, begin+1, end+1);
       break;
 
     case '?':
@@ -684,6 +687,7 @@ function addChar(char, begin, end) {
       createPoint(8, 7, begin, end);
       // createPoint(8, 8, begin, end);
 
+      createPoint(8, 12, begin+1, end+1);
       createPoint(8, 13, begin+1, end+1);
       break;
   }
@@ -715,7 +719,8 @@ function getRandomInt(min, max) {
 
 var FADE = 7;
 var FRAMES = 256;
-const SPEED = 1.7;
+const SPEED = 1;
+const FRAMERATE = 60;
 
 const POINT_WIDTH = 0.29;
 const POINT_HEIGHT = 45;
@@ -862,7 +867,7 @@ function setup() {
   
   resizeGraphics();
   
-  frameRate(30);
+  frameRate(FRAMERATE);
 
   noLoop();
   

@@ -95,7 +95,7 @@
                 Submission for the <a href="https://128kb.timrodenbroeker.de/" target="_blank">128kb exhibition</a> by <a href="https://timrodenbroeker.de/" target="_blank">Tim Rodenbröker</a>.
             </p>
 
-            <div style="display: flex; align-items: center;">
+            <div id="sliding-grids-interactive" style="display: flex; align-items: center;">
                 <div style="width: 55%;">
                     <canvas class="image-small" id="sliding-grids-canvas" style="margin: auto;"></canvas>
                 </div>
@@ -104,8 +104,7 @@
 
 
                         <p style="margin: auto; text-align: center;">
-                            <!-- Enter sequence (0-9):<br> -->
-                            <input class="text-input" id="sliding-grids-pattern-input" type="text" style="width: 100%; margin: auto; text-align: center;" placeholder="Write something"></p>
+                            <input class="text-input" autocomplete="off" id="sliding-grids-pattern-input" type="text" style="width: 100%; margin: auto; text-align: center;" placeholder="Write something"></p>
                         
 
                         <div style="display: flex; gap: 30px;">
@@ -141,12 +140,7 @@
 
             <div id="frog-container" style="display: flex; margin-right: 10%; margin-left: 10%; width:80%; justify-content: center;">
                 <img src="imgs/frogs/0.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%; cursor:pointer;" loading="lazy" id="dissertation-frog-image" onclick="cycleFrog()">
-                <!-- <p style="position: relative; top: 100px; right: 40%;">[1/20]</p> -->
             </div>
-
-            <!-- <div class="image-small three-js-container" id="frog-model-container"></div> -->
-            
-            <!-- <canvas class="image-small" id="frog-model-canvas"></canvas> -->
 
             <p>
                 Input images on the left are taken from <a href="https://vision.seas.harvard.edu/qsfs/index.html" target="_blank">Xiong et al., 2012</a> (click image to cycle through). The reconstructed surface is shown on the right (drag to rotate).
@@ -165,7 +159,6 @@
                 <br><br>
                 The basic method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project aims to derive, implement and evaluate a robust algorithm on these trickier cases.
                 <br><br>
-                 <!-- The project implements the algorithm of <a>Ikehata et. al. (2012)</a> to accomodate for this, which is then extended using a smoothing technique introduced by <a>Jones, Durand and Zweiker (2004)</a>. -->
                 The codebase contains three main features:
                 <ul>
                     <li>A pipeline for "corrupting" images with image noise and specular highlights.</li>
