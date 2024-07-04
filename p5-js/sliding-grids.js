@@ -237,7 +237,6 @@ function addChar(char, begin, end) {
       createPoint(7, 10, begin+1, end+1);
       break;
 
-
     case 'c':
       createPoint(8, 6, begin+1, end+1);
       createPoint(9, 6, begin+1, end+1);
@@ -254,7 +253,6 @@ function addChar(char, begin, end) {
       createPoint(8, 11, begin+1, end+1);
       createPoint(9, 11, begin+1, end+1);
       break;
-
 
     case 'd':
       createPoint(5, 6, begin+1, end+1);
@@ -274,20 +272,31 @@ function addChar(char, begin, end) {
       break;
 
     case 'e':
-      createPoint(7, 6, begin+1, end+1);
-      createPoint(8, 6, begin+1, end+1);
+      createPoint(6, 7, begin+1, end+1);
+      createPoint(8, 7, begin+1, end+1);
+      createPoint(10, 7, begin+1, end+1);
+      createPoint(12, 7, begin+1, end+1);
   
-      createPoint(4, 7, begin, end);
-      createPoint(12, 7, begin, end);
+      createPoint(5, 8, begin, end);
+      // createPoint(4, 7, begin, end);
+      // createPoint(3, 7, begin, end);
+      // createPoint(4, 7, begin, end);
+      // createPoint(12, 7, begin, end);
 
-      createPoint(4, 8, begin, end);
-      createPoint(4, 9, begin, end);
+      createPoint(6, 9, begin, end);
+      createPoint(8, 9, begin, end);
+      createPoint(10, 9, begin, end);
+      createPoint(12, 9, begin, end);
+      // createPoint(3, 9, begin, end);
+      // createPoint(4, 9, begin, end);
 
-      createPoint(4, 10, begin, end);
-      createPoint(12, 10, begin, end);
+      createPoint(5, 10, begin, end);
+      // createPoint(12, 10, begin, end);
 
-      createPoint(7, 11, begin+1, end+1);
+      createPoint(6, 11, begin+1, end+1);
       createPoint(8, 11, begin+1, end+1);
+      createPoint(10, 11, begin+1, end+1);
+      createPoint(12, 11, begin+1, end+1);
       break;
 
     case 'f':
@@ -327,21 +336,21 @@ function addChar(char, begin, end) {
       break;
   
     case 'h':
-      createPoint(4, 6, begin+1, end+1);
-      createPoint(12, 6, begin+1, end+1);
+      createPoint(5, 6, begin+1, end+1);
+      createPoint(11, 6, begin+1, end+1);
 
-      createPoint(4, 7, begin, end);
-      createPoint(12, 7, begin, end);
+      createPoint(5, 7, begin, end);
+      createPoint(11, 7, begin, end);
 
       createPoint(6, 8, begin, end);
       createPoint(8, 8, begin, end);
       createPoint(10, 8, begin, end);
 
-      createPoint(4, 9, begin, end);
-      createPoint(12, 9, begin, end);
+      createPoint(5, 9, begin, end);
+      createPoint(11, 9, begin, end);
 
-      createPoint(4, 10, begin+1, end+1);
-      createPoint(12, 10, begin+1, end+1);
+      createPoint(5, 10, begin+1, end+1);
+      createPoint(11, 10, begin+1, end+1);
       break;
 
     case 'i':
@@ -475,7 +484,6 @@ function addChar(char, begin, end) {
       createPoint(5, 11, begin+1, end+1);
       break;
       
-
     case 'q':
       createPoint(7, 6, begin+1, end+1);
       createPoint(9, 6, begin+1, end+1);
