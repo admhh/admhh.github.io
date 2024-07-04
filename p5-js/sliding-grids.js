@@ -333,9 +333,9 @@ function addChar(char, begin, end) {
       createPoint(4, 7, begin, end);
       createPoint(12, 7, begin, end);
 
-      createPoint(5, 8, begin, end);
+      createPoint(6, 8, begin, end);
       createPoint(8, 8, begin, end);
-      createPoint(11, 8, begin, end);
+      createPoint(10, 8, begin, end);
 
       createPoint(4, 9, begin, end);
       createPoint(12, 9, begin, end);
@@ -442,6 +442,242 @@ function addChar(char, begin, end) {
       createPoint(12, 10, begin+1, end+1);
       break;
 
+    case 'o':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+
+      createPoint(3, 7, begin, end);
+      createPoint(13, 7, begin, end);
+
+      createPoint(3, 8, begin, end);
+      createPoint(13, 8, begin, end);
+  
+      createPoint(3, 9, begin, end);
+      createPoint(13, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+
+      break;
+
+    case 'p':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+  
+      createPoint(6, 7, begin, end);
+      createPoint(13, 7, begin, end);
+  
+      createPoint(6, 8, begin, end);
+      createPoint(9, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+      createPoint(5, 10, begin+1, end+1);
+      createPoint(5, 11, begin+1, end+1);
+      break;
+      
+
+    case 'q':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(3, 8, begin, end);
+      createPoint(13, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+      // createPoint(12, 9, begin, end);
+      createPoint(12, 9, begin, end);
+  
+      createPoint(8, 10, begin+1, end+1);
+      createPoint(11, 10, begin+1, end+1);
+      createPoint(15, 10, begin+1, end+1);
+
+      break;
+
+    case 'r':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+  
+      createPoint(6, 7, begin, end);
+      createPoint(13, 7, begin, end);
+  
+      createPoint(6, 8, begin, end);
+      createPoint(9, 8, begin, end);
+  
+      createPoint(6, 9, begin, end);
+      createPoint(10, 9, begin, end);
+      createPoint(6, 10, begin+1, end+1);
+      createPoint(12, 10, begin+1, end+1);
+      break;
+
+    case 's':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+  
+      createPoint(2, 7, begin, end);
+      createPoint(3, 7, begin, end);
+      // createPoint(12, 7, begin, end);
+  
+      createPoint(7, 8, begin, end);
+      createPoint(9, 8, begin, end);
+  
+      // createPoint(4, 9, begin, end);
+      createPoint(13, 9, begin, end);
+      createPoint(14, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+      break;
+
+    case 't':
+      createPoint(5, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(11, 6, begin+1, end+1);
+      createPoint(8, 7, begin+1, end+1);
+      createPoint(8, 8, begin, end);
+      createPoint(8, 9, begin, end);
+      createPoint(8, 10, begin, end);
+      createPoint(8, 11, begin+1, end+1);
+      createPoint(8, 12, begin+1, end+1);
+      break;
+
+    case 'u':
+      createPoint(3, 6, begin+1, end+1);
+      createPoint(13, 6, begin+1, end+1);
+
+      createPoint(3, 7, begin, end);
+      createPoint(13, 7, begin, end);
+
+      createPoint(3, 8, begin, end);
+      createPoint(13, 8, begin, end);
+  
+      createPoint(3, 9, begin, end);
+      createPoint(13, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+
+      break;
+
+    case 'v':
+      createPoint(2, 6, begin+1, end+1);
+      createPoint(14, 6, begin+1, end+1);
+
+      createPoint(3, 7, begin, end);
+      createPoint(13, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(12, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+      createPoint(11, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+
+      break;
+
+    case 'w':
+      createPoint(2, 6, begin+1, end+1);
+      createPoint(14, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(8, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(8, 8, begin, end);
+      createPoint(12, 8, begin, end);
+  
+      createPoint(4, 9, begin, end);
+      createPoint(8, 9, begin, end);
+      createPoint(12, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+
+      break;
+
+    case 'x':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
+
+      createPoint(6, 7, begin, end);
+      createPoint(10, 7, begin, end);
+
+      createPoint(8, 8, begin, end);
+      createPoint(8, 9, begin, end);
+
+      createPoint(6, 10, begin, end);
+      createPoint(10, 10, begin, end);
+
+      createPoint(4, 11, begin+1, end+1);
+      createPoint(12, 11, begin+1, end+1);
+      break;
+
+    case 'y':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
+
+      createPoint(6, 7, begin, end);
+      createPoint(10, 7, begin, end);
+
+      createPoint(9, 8, begin, end);
+      createPoint(8, 9, begin, end);
+
+      createPoint(7, 10, begin, end);
+      createPoint(6, 11, begin+1, end+1);
+      createPoint(4, 12, begin+1, end+1);
+      break;
+
+    case 'z':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(10, 6, begin+1, end+1);
+  
+      createPoint(11, 7, begin, end);
+      // createPoint(14, 7, begin, end);
+      // createPoint(12, 7, begin, end);
+  
+      createPoint(8, 8, begin, end);
+      // createPoint(9, 8, begin, end);
+  
+      // createPoint(4, 9, begin, end);
+      createPoint(5, 9, begin, end);
+      // createPoint(3, 9, begin, end);
+  
+      createPoint(6, 10, begin+1, end+1);
+      createPoint(8, 10, begin+1, end+1);
+      createPoint(10, 10, begin+1, end+1);
+      break;
+
+    case '!':
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(8, 7, begin+1, end+1);
+      createPoint(8, 8, begin, end);
+      // createPoint(8, 9, begin, end);
+      // createPoint(8, 10, begin, end);
+      // createPoint(8, 11, begin+1, end+1);
+      createPoint(8, 12, begin+1, end+1);
+      break;
+
+    case '?':
+      createPoint(7, 4, begin+1, end+1);
+      createPoint(9, 4, begin+1, end+1);
+  
+      createPoint(4, 5, begin, end);
+      createPoint(12, 5, begin, end);
+  
+      // createPoint(7, 8, begin, end);
+      createPoint(11, 6, begin, end);
+
+      createPoint(8, 7, begin, end);
+      // createPoint(8, 8, begin, end);
+
+      createPoint(8, 13, begin+1, end+1);
+      break;
   }
 }
 
