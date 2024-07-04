@@ -41,6 +41,7 @@ function createPoint(x, y, start, end) {
 }
 
 function addChar(char, begin, end) {
+
   switch (char) {
     case '1':
       createPoint(8, 6, begin+1, end+1);
@@ -70,7 +71,6 @@ function addChar(char, begin, end) {
       break;
 
     case '3':
-
       createPoint(7, 6, begin+1, end+1);
       createPoint(8, 6, begin+1, end+1);
   
@@ -88,7 +88,6 @@ function addChar(char, begin, end) {
       break;
 
     case '4':
-      
       createPoint(12, 6, begin+1, end+1);
       createPoint(5, 6, begin+1, end+1);
       createPoint(12, 7, begin, end);
@@ -101,7 +100,6 @@ function addChar(char, begin, end) {
       break;
 
     case '5':
-      
       createPoint(6, 6, begin+1, end+1);
       createPoint(8, 6, begin+1, end+1);
       createPoint(10, 6, begin+1, end+1);
@@ -136,7 +134,6 @@ function addChar(char, begin, end) {
       break;
 
     case '7':
-
       createPoint(6, 6, begin+1, end+1);
       createPoint(8, 6, begin+1, end+1);
       createPoint(10, 6, begin+1, end+1);
@@ -171,8 +168,6 @@ function addChar(char, begin, end) {
       break;
 
     case '9':
-  
-  
       createPoint(7, 6, begin+1, end+1);
       createPoint(9, 6, begin+1, end+1);
 
@@ -191,7 +186,6 @@ function addChar(char, begin, end) {
       break;
 
     case '0':
-
       createPoint(7, 6, begin+1, end+1);
       createPoint(9, 6, begin+1, end+1);
 
@@ -209,21 +203,262 @@ function addChar(char, begin, end) {
 
       break;
 
+    case 'a':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+  
+      createPoint(4, 7, begin, end);
+      createPoint(12, 7, begin, end);
+  
+      createPoint(6, 8, begin, end);
+      createPoint(10, 8, begin, end);
+  
+      createPoint(4, 9, begin, end);
+      createPoint(12, 9, begin, end);
+  
+      createPoint(4, 10, begin+1, end+1);
+      createPoint(12, 10, begin+1, end+1);
+      break;
+
+    case 'b':
+      createPoint(5, 6, begin+1, end+1);
+      createPoint(7, 6, begin+1, end+1);
+  
+      createPoint(5, 7, begin, end);
+      createPoint(13, 7, begin, end);
+  
+      createPoint(5, 8, begin, end);
+      createPoint(10, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+      createPoint(13, 9, begin, end);
+  
+      createPoint(5, 10, begin+1, end+1);
+      createPoint(7, 10, begin+1, end+1);
+      break;
+
+
+    case 'c':
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+
+      createPoint(5, 7, begin, end);
+      createPoint(13, 7, begin, end);
+
+      createPoint(1, 8, begin, end);
+      createPoint(1, 9, begin, end);
+
+      createPoint(5, 10, begin, end);
+      createPoint(13, 10, begin, end);
+
+      createPoint(8, 11, begin+1, end+1);
+      createPoint(9, 11, begin+1, end+1);
+      break;
+
+
+    case 'd':
+      createPoint(5, 6, begin+1, end+1);
+      createPoint(7, 6, begin+1, end+1);
+  
+      createPoint(5, 7, begin, end);
+      createPoint(13, 7, begin, end);
+  
+      createPoint(5, 8, begin, end);
+      createPoint(13, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+      createPoint(13, 9, begin, end);
+  
+      createPoint(5, 10, begin+1, end+1);
+      createPoint(7, 10, begin+1, end+1);
+      break;
+
+    case 'e':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+  
+      createPoint(4, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(4, 9, begin, end);
+
+      createPoint(4, 10, begin, end);
+      createPoint(12, 10, begin, end);
+
+      createPoint(7, 11, begin+1, end+1);
+      createPoint(8, 11, begin+1, end+1);
+      break;
+
+    case 'f':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+      // createPoint(10, 6, begin+1, end+1);
+  
+      createPoint(5, 7, begin, end);
+      // createPoint(13, 7, begin, end);
+  
+      createPoint(6, 8, begin, end);
+      createPoint(8, 8, begin, end);
+      // createPoint(10, 8, begin, end);
+  
+      createPoint(5, 9, begin, end);
+  
+      createPoint(5, 10, begin+1, end+1);
+      createPoint(5, 11, begin+1, end+1);
+        break;
+
+    case 'g':
+      createPoint(7, 6, begin+1, end+1);
+      createPoint(9, 6, begin+1, end+1);
+
+      createPoint(2, 7, begin, end);
+      // createPoint(12, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(11, 8, begin, end);
+  
+      createPoint(4, 9, begin, end);
+      createPoint(13, 9, begin, end);
+  
+      createPoint(7, 10, begin+1, end+1);
+      createPoint(9, 10, begin+1, end+1);
+
+      break;
+  
+    case 'h':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(5, 8, begin, end);
+      createPoint(8, 8, begin, end);
+      createPoint(11, 8, begin, end);
+
+      createPoint(4, 9, begin, end);
+      createPoint(12, 9, begin, end);
+
+      createPoint(4, 10, begin+1, end+1);
+      createPoint(12, 10, begin+1, end+1);
+      break;
+
+    case 'i':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(10, 6, begin+1, end+1);
+      createPoint(8, 7, begin+1, end+1);
+      createPoint(8, 8, begin, end);
+      createPoint(8, 9, begin, end);
+      createPoint(8, 10, begin, end);
+      createPoint(8, 11, begin+1, end+1);
+      createPoint(6, 12, begin+1, end+1);
+      createPoint(8, 12, begin+1, end+1);
+      createPoint(10, 12, begin+1, end+1);
+      break;
+      
+    case 'j':
+      createPoint(6, 6, begin+1, end+1);
+      createPoint(8, 6, begin+1, end+1);
+      createPoint(10, 6, begin+1, end+1);
+      createPoint(10, 7, begin+1, end+1);
+      createPoint(10, 8, begin, end);
+      createPoint(10, 9, begin, end);
+      createPoint(10, 10, begin, end);
+      createPoint(10, 11, begin+1, end+1);
+      createPoint(5, 12, begin+1, end+1);
+      createPoint(7, 12, begin+1, end+1);
+      // createPoint(10, 12, begin+1, end+1);
+      break;
+  
+    case 'k':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(8, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(6, 8, begin, end);
+      // createPoint(10, 8, begin, end);
+
+      createPoint(4, 9, begin, end);
+      createPoint(8, 9, begin, end);
+
+      createPoint(4, 10, begin+1, end+1);
+      createPoint(12, 10, begin+1, end+1);
+      break;
+      
+    case 'l':
+      createPoint(5, 6, begin+1, end+1);
+      createPoint(5, 7, begin+1, end+1);
+      createPoint(5, 8, begin, end);
+      createPoint(5, 9, begin, end);
+      createPoint(5, 10, begin, end);
+      createPoint(5, 11, begin+1, end+1);
+      createPoint(7, 12, begin+1, end+1);
+      createPoint(9, 12, begin+1, end+1);
+      createPoint(11, 12, begin+1, end+1);
+      break;
+  
+    case 'm':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(12, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(6, 7, begin, end);
+      createPoint(10, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(8, 8, begin, end);
+      createPoint(12, 8, begin, end);
+
+      createPoint(3, 9, begin, end);
+      createPoint(13, 9, begin, end);
+
+      createPoint(3, 10, begin+1, end+1);
+      createPoint(13, 10, begin+1, end+1);
+      break;
+
+    case 'n':
+      createPoint(4, 6, begin+1, end+1);
+      createPoint(13, 6, begin+1, end+1);
+
+      createPoint(4, 7, begin, end);
+      createPoint(6, 7, begin, end);
+      createPoint(12, 7, begin, end);
+
+      createPoint(4, 8, begin, end);
+      createPoint(8, 8, begin, end);
+      createPoint(12, 8, begin, end);
+
+      createPoint(4, 9, begin, end);
+      createPoint(10, 9, begin, end);
+      createPoint(12, 9, begin, end);
+
+      createPoint(3, 10, begin+1, end+1);
+      createPoint(12, 10, begin+1, end+1);
+      break;
+
   }
 }
 
 
 function addMessage(message) {
   cursor = 20;
-  
-  for (let i=0; i < message.length; i++) {
 
-    addChar(message.charAt(i), cursor, cursor+32);
+  let messageLower = message.toLowerCase();
+  
+  for (let i=0; i < messageLower.length; i++) {
+
+    addChar(messageLower.charAt(i), cursor, cursor+32);
 
     cursor += 32;
   }
 
-  FRAMES = (message.length + 1) * 32;
+  FRAMES = (messageLower.length + 1) * 32;
 }
 
 
