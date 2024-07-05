@@ -138,6 +138,18 @@
                 Robust Photometric Stereo for Specular and Shadowed Objects Under Noise
             </h2>
 
+            <p>
+                The report for the project can be downloaded <a href="files/Dissertation AH.pdf" target="_blank">here</a>.
+            </p>
+
+            <p>
+                The accompanying code is available <a href="https://github.com/admhh/robust-photometric-stereo" target="_blank">here</a>.
+            </p>
+            
+            <p>
+                Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). Once a normal field is reconstructed, it can be integrated to give a surface.
+            </p>
+
             <div id="frog-container" style="display: flex; margin-right: 10%; margin-left: 10%; width:80%; justify-content: center;">
                 <img src="imgs/frogs/0.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%; cursor:pointer;" loading="lazy" id="dissertation-frog-image" onclick="cycleFrog()">
             </div>
@@ -147,17 +159,7 @@
             </p>
 
             <p>
-                The report for the project can be downloaded <a href="files/Dissertation AH.pdf" target="_blank">here</a>.
-            </p>
-
-            <p>
-                The accompanying code is available <a href="https://github.com/admhh/robust-photometric-stereo" target="_blank">here</a>.
-            </p>
-
-            <p>
-                Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). Once a normal field is reconstructed, it can be integrated to give a surface.
-                <br><br>
-                The basic method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project aims to derive, implement and evaluate a robust algorithm on these trickier cases.
+                The basic photometric stereo method assumes that surfaces are perfectly <i>Lambertian</i>, and as such suffers in the presence of image noise and <i>specular</i> (shiny) surfaces. The project aims to derive, implement and evaluate a robust algorithm on these trickier cases.
                 <br><br>
                 The codebase contains three main features:
                 <ul>
