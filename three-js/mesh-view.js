@@ -263,7 +263,7 @@ export function createScene() {
                 // not much to do yet
                 }
             } else {
-                if (!frog_grabbed) {
+                if (!frog_grabbed && frog_original != null) {
                     controls.autoRotate = true;
                 }
             }
