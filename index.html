@@ -150,12 +150,22 @@
                 Photometric Stereo is a technique concerned with extracting the <i>geometry</i> (normals) of a surface given a series of photographs captured under different lighting directions (<a href="https://www.cs.ubc.ca/~woodham/papers/Woodham80c.pdf" target="_blank">Woodham, 1980</a>). Once a normal field is reconstructed, it can be integrated to give a surface.
             </p>
 
+            <div style="display: flex; gap: 15px; align-items: center; width: 100%; margin: auto;">
+                <p style="margin: auto;">Input</p>
+                <p style="margin: auto;">Output</p>
+            </div>
+
             <div id="frog-container" style="display: flex; margin-right: 10%; margin-left: 10%; width:80%; justify-content: center;">
                 <img src="imgs/frogs/0.png" alt="A photo of a model frog." class="image-small" style="margin-left: 10%; margin-right: 10%; cursor:pointer;" loading="lazy" id="dissertation-frog-image" onclick="cycleFrog()">
             </div>
 
+            <div style="display: flex; gap: 15px; justify-content: center; width: 100%; align-self: center; padding-top: 20px;">
+                <button class="selected" id="frog-original-button" style="margin-right: 10px; font-size: 15px;">Original</button>
+                <button id="frog-corrupted-button" style="margin-left: 10px; font-size: 15px;">Corrupted</button>
+            </div>
+
             <p>
-                Input images on the left are taken from <a href="https://vision.seas.harvard.edu/qsfs/index.html" target="_blank">Xiong et al., 2012</a> (click image to cycle through). The reconstructed surface is shown on the right (drag to rotate).
+                Input images on the left are taken from <a href="https://vision.seas.harvard.edu/qsfs/index.html" target="_blank">Xiong et al., 2012</a> (click image to cycle through). Corrupted versions were generated as part of the project. The reconstructed surface is shown on the right (drag to rotate).
             </p>
 
             <p>
@@ -427,8 +437,9 @@
     // tracker for state of colour pickers
     var picker_open = false;
 
-    // tracker for frog image
-    var frog_index = 0;
+    // trackers for frog image
+    document.frog_index = 0;
+    document.frog_prefix = '';
 
     // do links work?
     var navigation_enabled = true;
@@ -734,12 +745,12 @@
     function cycleFrog() {
         const image = document.getElementById("dissertation-frog-image");
 
-        frog_index += 1;
-        if (frog_index > 19) {
-            frog_index = 0;
+        document.frog_index += 1;
+        if (document.frog_index > 19) {
+            document.frog_index = 0;
         }
 
-        image.src = "./imgs/frogs/" + frog_index + ".png";
+        image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
     }
 
     window.onresize = function() {

@@ -192,7 +192,9 @@ body {
     list-style-type: square;
 }
 
-.body-text a, a:visited, .link-general {
+/* ================================================== clickables ================================================== */
+
+.body-text a, a:visited, .link-general, .body-text button {
     font-weight: 600;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-decoration: underline;
@@ -201,9 +203,15 @@ body {
     color: var(--main-colour);
 }
 
-.body-text a:hover, .link-general:hover {
+.body-text a:hover, .link-general:hover, .body-text button:hover, .body-text button.selected {
     background: var(--main-colour);
     color: var(--secondary-colour);
+}
+
+.body-text button {
+    border: 1px solid var(--main-colour);
+    background: var(--secondary-colour);
+    text-decoration: none;
 }
 
 .body-text input[type="text"] {

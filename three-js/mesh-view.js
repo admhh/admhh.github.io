@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
@@ -17,6 +16,8 @@ export function createScene() {
 
         const small_scale = 1 / 3;
         const large_scale = 1 / 6;
+        
+        const image = document.getElementById('dissertation-frog-image');
 
         function resizeWindow() {
 
@@ -30,7 +31,6 @@ export function createScene() {
             }
 
             // resize the image while we're at it
-            const image = document.getElementById('dissertation-frog-image');
 
             if (image != [] && image != null) {
                 if (orientation == 'portrait') {
@@ -122,6 +122,10 @@ export function createScene() {
 
         const loader = new OBJLoader();
 
+        var frog_original;
+        var frog_corrupted;
+
+        // regular frog
         loader.load(
             './three-js/frog.obj',
             function(object) {
@@ -152,6 +156,8 @@ export function createScene() {
                 controls.autoRotate = true;
 
                 scene.add(frog_mesh);
+                
+                frog_original = frog_mesh;
 
                 scene.remove(circle);
             },
@@ -183,6 +189,52 @@ export function createScene() {
                 console.log( 'An error happened' );
             }
         );
+        
+        // corrupted frog
+        loader.load(
+            './three-js/frog-corrupted.obj',
+            function(object) {
+                // when the frog is loaded, first extract the mesh
+                const frog_mesh = object.children[0];
+
+                // then give the mesh a material
+                const mesh_material = new THREE.MeshPhongMaterial({color:0xeeeeee, specular:0xffffff, shininess:4, emissive:0x000000});
+                mesh_material.flatShading = true;
+                mesh_material.side = THREE.DoubleSide;
+                frog_mesh.material = mesh_material;
+            
+                frog_mesh.geometry.computeVertexNormals();
+                frog_mesh.geometry.normalizeNormals();
+
+                frog_mesh.scale.x = 0.01;
+                frog_mesh.scale.y = 0.01;
+                frog_mesh.scale.z = 0.01;
+
+                frog_mesh.rotateZ(-Math.PI / 2);
+                frog_mesh.position.set(-1.5, 2.51, 0);
+
+                frog_mesh.castShadow = true;
+                frog_mesh.receiveShadow = true;
+
+                frog_mesh.name = 'frog-corrupted';
+
+                controls.autoRotate = true;
+
+                frog_mesh.visible = false;
+
+                scene.add(frog_mesh);
+
+                frog_corrupted = frog_mesh;
+
+                scene.remove(circle);
+            },
+            function(xhr) {
+
+            },
+            function ( error ) {
+                console.log( 'An error happened' );
+            }
+        );
 
         const ambientLight = new THREE.AmbientLight(0xaaaaaa, 0.7);
         scene.add(ambientLight);
@@ -199,7 +251,6 @@ export function createScene() {
             renderer.render(scene, camera);
         }
         
-
         // deactivate three js when off screen
         let options = {
             rootMargin: "0px",
@@ -220,10 +271,39 @@ export function createScene() {
             }
         }, options);
         
-        let target = document.getElementById("frog-renderer");
+        const target = document.getElementById("frog-renderer");
         observer.observe(target);
 
         animate();
+
+        const frog_original_button = document.getElementById('frog-original-button');
+        const frog_corrupted_button = document.getElementById('frog-corrupted-button');
+
+        console.log(scene);
+
+        frog_original_button.onclick = function () {
+            frog_original.visible = true;
+            frog_corrupted.visible = false;
+
+            frog_original_button.className = 'selected';
+            frog_corrupted_button.className = '';
+
+            document.frog_prefix = '';
+
+            image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
+        }
+
+        frog_corrupted_button.onclick = function () {
+            frog_original.visible = false;
+            frog_corrupted.visible = true;
+
+            frog_original_button.className = '';
+            frog_corrupted_button.className = 'selected';
+
+            document.frog_prefix = 'corrupted-';
+
+            image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
+        }
 
         scene_created = true;
     }
