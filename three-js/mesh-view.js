@@ -218,8 +218,6 @@ export function createScene() {
 
                 frog_mesh.name = 'frog-corrupted';
 
-                controls.autoRotate = true;
-
                 frog_mesh.visible = false;
 
                 scene.add(frog_mesh);
@@ -302,7 +300,7 @@ export function createScene() {
             document.frog_prefix = 'corrupted-';
 
             image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
-            
+
             frog_original.visible = false;
             frog_corrupted.visible = true;
         }
