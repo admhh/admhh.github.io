@@ -16,7 +16,7 @@ export function createScene() {
 
         const small_scale = 1 / 3;
         const large_scale = 1 / 6;
-        
+
         const image = document.getElementById('dissertation-frog-image');
 
         function resizeWindow() {
@@ -282,8 +282,6 @@ export function createScene() {
         console.log(scene);
 
         frog_original_button.onclick = function () {
-            frog_original.visible = true;
-            frog_corrupted.visible = false;
 
             frog_original_button.className = 'selected';
             frog_corrupted_button.className = '';
@@ -291,11 +289,12 @@ export function createScene() {
             document.frog_prefix = '';
 
             image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
+
+            frog_original.visible = true;
+            frog_corrupted.visible = false;
         }
 
         frog_corrupted_button.onclick = function () {
-            frog_original.visible = false;
-            frog_corrupted.visible = true;
 
             frog_original_button.className = '';
             frog_corrupted_button.className = 'selected';
@@ -303,6 +302,9 @@ export function createScene() {
             document.frog_prefix = 'corrupted-';
 
             image.src = "./imgs/frogs/" + document.frog_prefix + document.frog_index + ".png";
+            
+            frog_original.visible = false;
+            frog_corrupted.visible = true;
         }
 
         scene_created = true;
